@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeeJay Hospitality Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Stylish Icons: FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f26842',
+              light: '#fdf7f3',
+              dark: '#123e70', // Deep Navy Blue to match logo
+              text: '#4a4a4a',
+              teal: '#2cb9aa',
+              bg: '#fcf9f5'
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'blob': 'morph 8s ease-in-out infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'float-delayed': 'float 4s ease-in-out 2s infinite',
+            'spin-slow': 'spin 20s linear infinite',
+            'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
+          },
+          keyframes: {
+            morph: {
+              '0%, 100%': { borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%' },
+              '34%': { borderRadius: '70% 30% 50% 50% / 30% 30% 70% 70%' },
+              '67%': { borderRadius: '100% 60% 60% 100% / 100% 100% 60% 60%' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            'pulse-soft': {
+              '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+              '50%': { transform: 'scale(1.05)', opacity: '0.9' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(var(--scroll-translate, 30px));
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero blob shape - matches reference */
+    .hero-blob {
+      border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    }
+    .hero-blob-bg {
+      border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    }
+
+/* ===========================
+   MOBILE FIXES (0-768px)
+=========================== */
+
+@media (max-width: 768px) {
+
+  /* Floating Info Bar */
+
+  .relative.-mt-6{
+    margin-top:20px !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:12px !important;
+    padding:16px !important;
+  }
+
+  .relative.-mt-6 > div{
+    border:none !important;
+  }
+
+  /* Features */
+
+  .features-grid{
+    gap:40px !important;
+  }
+  
+  .features-grid > div {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .features-grid > div > div:first-child {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    margin-right: 24px !important;
+    margin-bottom: 0 !important;
+    width: 72px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .features-grid .text-center {
+    text-align: left !important;
+    padding: 0 !important;
+    flex: 1 !important;
+  }
+
+  .features-grid .hidden.md\:flex {
+    display: none !important; /* Hide dotted lines since we have vertical wavy line */
+  }
+
+  .features-grid h4{
+    height:auto !important;
+  }
+
+  .features-grid p{
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+
+
+  /* Section Titles */
+
+  h2{
+    font-size:2rem !important;
+    line-height:1.2 !important;
+  }
+
+  /* Services Slider */
+
+  .service-carousel{
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+
+  .service-card{
+    flex:0 0 180px !important;
+  }
+
+  .service-card.active-card{
+    flex:0 0 220px !important;
+  }
+
+  /* Industries */
+
+  .industry-col{
+    gap:20px !important;
+    margin-bottom:30px !important;
+  }
+
+  .industry-img{
+    width:220px !important;
+    height:260px !important;
+    margin: 0 auto !important;
+  }
+
+  .industry-text{
+    text-align:center !important;
+    align-items:center !important;
+  }
+
+  /* Stats */
+
+  .stats-inner{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+    padding: 16px 12px !important;
+  }
+
+  .stats-inner .text-2xl {
+    font-size: 1.25rem !important;
+  }
+  
+  .stats-inner .text-sm {
+    font-size: 0.75rem !important;
+  }
+
+  .stats-inner .w-14 {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .stats-inner .gap-4 {
+    gap: 10px !important;
+  }
+
+  .stats-divider{
+    display:none !important;
+  }
+
+  /* Section spacing */
+
+  section{
+    padding-top:70px !important;
+    padding-bottom:70px !important;
+  }
+  
+  #features {
+    padding-bottom: 80px !important;
+  }
+
+  .services-header {
+    padding-top: 20px !important;
+  }
+
+  #services {
+    padding-top: 0 !important;
+    margin-top: -5px !important;
+    background-color: #123e70 !important;
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .services-header {
+    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+}
+  </style>
+</head>
+
+<body class="bg-brand-bg text-brand-text font-sans overflow-x-hidden relative">
+
+  <!-- Hero Section Wrapper -->
+  <div class="relative pb-12 lg:pb-32 z-10">
+    <!-- Desktop Diagonal Peach Wave Background -->
+    <div class="hidden md:block absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-full overflow-hidden -z-20 pointer-events-none">
+      <svg viewBox="0 0 1440 900" class="w-full h-[110%] lg:h-full" preserveAspectRatio="none">
+        <path fill="#fef4ec" d="M0,0 L1440,0 L1440,550 C 1200,300 600,1100 0,650 Z"></path>
+      </svg>
+    </div>
+
+    <!-- Mobile Peach Wave Background -->
+    <div class="block md:hidden absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[105%] overflow-hidden -z-20 pointer-events-none">
+      <svg viewBox="0 0 1440 1200" class="w-full h-full" preserveAspectRatio="none">
+        <path fill="#fef4ec" d="M0,0 L1440,0 L1440,1050 C 1200,1200 600,1000 0,1100 Z"></path>
+      </svg>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center relative z-50">
+      <div class="flex-shrink-0">
+        <a href="index.html">
+          <img src="./logo.png" alt="PeeJay Logo" class="w-32 sm:w-40 md:w-48 h-auto object-contain" />
+        </a>
+      </div>
+
+      <!-- Desktop Menu (Centered) -->
+      <div class="hidden md:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-brand-orange transition-colors hover:text-brand-orange">HOME</a>
+        <a href="services.html" class="text-brand-dark transition-colors hover:text-brand-orange">SERVICES</a>
+        <a href="about.html" class="text-brand-dark transition-colors hover:text-brand-orange">ABOUT</a>
+        <a href="contact.html" class="text-brand-dark transition-colors hover:text-brand-orange">CONTACT</a>
+      </div>
+
+      <div class="hidden md:flex flex-shrink-0">
+        <a href="contact.html"
+          class="bg-brand-orange hover:bg-[#d95632] text-white px-8 py-3 rounded-full text-sm font-semibold transition-all hover:shadow-[0_10px_20px_rgba(242,104,66,0.3)]">
+          Contact Us
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden ml-auto text-2xl text-brand-dark focus:outline-none z-[60] relative"
+        onclick="toggleMobileMenu()">
+        <i id="menuIcon" class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Mobile Drawer Overlay -->
+      <div id="mobileOverlay"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[55] hidden md:hidden"
+        onclick="toggleMobileMenu()"></div>
+
+      <!-- Mobile Drawer -->
+      <div id="mobileMenu"
+        class="fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-white z-[60] shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+          <a href="index.html">
+            <img src="./logo.png" alt="PeeJay Logo" class="h-10 w-auto object-contain" />
+          </a>
+          <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-brand-dark transition-colors">
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Drawer Links -->
+        <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
+          <a href="index.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-orange font-bold text-sm bg-orange-50 border-l-4 border-brand-orange">
+            <i class="fa-solid fa-house text-xs"></i> HOME
+          </a>
+          <a href="services.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+            <i class="fa-solid fa-briefcase text-xs"></i> SERVICES
+          </a>
+          <a href="about.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+            <i class="fa-solid fa-building-user text-xs"></i> ABOUT
+          </a>
+          <a href="contact.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+            <i class="fa-solid fa-phone text-xs"></i> CONTACT
+          </a>
+        </nav>
+
+        <!-- Drawer Footer CTA -->
+        <div class="px-6 pb-8">
+          <a href="contact.html"
+            class="block w-full bg-brand-orange hover:bg-[#d95632] text-white py-3 rounded-xl font-semibold text-sm text-center transition-all shadow-md">
+            <i class="fa-solid fa-arrow-right mr-2"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const icon = document.getElementById('menuIcon');
+        const isOpen = !menu.classList.contains('translate-x-full');
+        if (isOpen) {
+          menu.classList.add('translate-x-full');
+          overlay.classList.add('hidden');
+          icon.className = 'fa-solid fa-bars';
+          document.body.style.overflow = '';
+        } else {
+          menu.classList.remove('translate-x-full');
+          overlay.classList.remove('hidden');
+          icon.className = 'fa-solid fa-xmark';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    </script>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-12 pb-20 md:pb-24 relative z-10 animate-on-scroll overflow-hidden">
+
+      <div class="grid grid-cols-[1.2fr_1.2fr] md:grid-cols-[1.2fr_0.8fr] gap-2 md:gap-8 items-center">
+        <div class="text-left flex flex-col items-start">
+          <p class="text-brand-orange font-bold text-[7px] md:text-sm tracking-widest uppercase mb-1 md:mb-2 flex items-center gap-1 md:gap-2">
+            <i class="fa-solid fa-star text-[7px] md:text-sm"></i> 15+ YEARS OF EXPERTISE
+          </p>
+          <h1 class="hero-title text-[22px] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-6">
+            Facility Management <br>
+            Met With <span class="text-brand-orange">Excellence.</span>
+          </h1>
+          <div class="flex flex-row gap-1.5 md:gap-4 w-full justify-start">
+            <a href="services.html"
+              class="bg-brand-orange hover:bg-[#d95632] text-white px-3 py-1.5 md:px-8 md:py-3 rounded-full font-semibold text-[9px] md:text-sm transition-all shadow-md hover:shadow-lg text-center whitespace-nowrap w-fit">
+              Explore Our Work
+            </a>
+            <a href="about.html"
+              class="border md:border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white px-3 py-1.5 md:px-8 md:py-3 rounded-full font-semibold text-[9px] md:text-sm transition-all text-center whitespace-nowrap w-fit">
+              Our Legacy
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT IMAGE AREA -->
+        <div
+          class="relative flex justify-end items-center mt-0 w-full max-w-[450px] mx-0">
+
+          <!-- Orange Solid Blob Behind Image -->
+          <div
+            class="absolute top-2 right-2 md:top-6 md:right-6 lg:top-8 lg:right-auto lg:-left-6 w-full aspect-[4/3.5] hero-blob bg-brand-orange z-0 block">
+          </div>
+
+          <!-- Main Blob Image -->
+          <div
+            class="w-full aspect-[4/3.5] hero-blob overflow-hidden border-[2px] md:border-[6px] border-white shadow-xl md:shadow-2xl relative z-10">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Facility Management" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Floating Icon Left -->
+          <div class="absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2
+          w-6 h-6 md:w-16 md:h-16 bg-white rounded-full shadow-md md:shadow-xl
+          flex items-center justify-center z-20">
+            <i class="fa-solid fa-shield-halved text-[10px] md:text-xl text-green-500"></i>
+          </div>
+
+          <!-- Floating Icon Right -->
+          <div class="absolute -right-1 md:-right-4 top-4 md:top-16
+          w-6 h-6 md:w-16 md:h-16 bg-white rounded-full shadow-md md:shadow-xl
+          flex items-center justify-center z-20">
+            <i class="fa-solid fa-users text-[10px] md:text-xl text-brand-orange"></i>
+          </div>
+
+          <!-- Decorative Curves -->
+          <div class="absolute top-2 md:top-12 right-0 md:right-0 w-8 h-8 md:w-20 md:h-20
+          border-r-2 md:border-r-4 border-brand-orange rounded-full opacity-50 z-0">
+          </div>
+
+          <div class="absolute left-2 md:left-10 bottom-8 md:bottom-24 w-8 h-8 md:w-16 md:h-16
+          border-l-2 md:border-l-4 border-green-400 rounded-full opacity-60 z-0">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Info Card - overlapping bottom of hero, spanning left text + right blob -->
+      <div
+        class="relative -mt-6 md:-mt-12 bg-white p-2 sm:p-4 md:p-6 rounded-xl md:rounded-3xl shadow-md md:shadow-[0_15px_40px_rgba(0,0,0,0.08)] flex flex-row items-center justify-between gap-1 sm:gap-2 md:gap-6 z-40 border border-gray-100 w-full max-w-4xl mx-auto">
+        <div class="flex-1 flex flex-col px-1 sm:px-2 md:px-4 text-center md:text-left border-r border-gray-100">
+          <p class="text-[8px] sm:text-[10px] md:text-xs text-gray-400 font-medium uppercase tracking-wider mb-1 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-1">
+            <i class="fa-solid fa-location-dot text-brand-orange text-[10px] md:text-xs"></i><span class="mt-0.5 md:mt-0">Location</span>
+          </p>
+          <p class="font-semibold text-brand-dark text-[9px] sm:text-[11px] md:text-sm leading-tight">Visakhapatnam, AP</p>
+        </div>
+        <div class="flex-1 flex flex-col px-1 sm:px-2 md:px-4 text-center md:text-left border-r border-gray-100">
+          <p class="text-[8px] sm:text-[10px] md:text-xs text-gray-400 font-medium uppercase tracking-wider mb-1 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-1">
+            <i class="fa-solid fa-building text-brand-orange text-[10px] md:text-xs"></i><span class="mt-0.5 md:mt-0">Service</span>
+          </p>
+          <p class="font-semibold text-brand-dark text-[9px] sm:text-[11px] md:text-sm leading-tight">All Services</p>
+        </div>
+        <div class="flex-1 flex flex-col px-1 sm:px-2 md:px-4 text-center md:text-left border-r border-gray-100">
+          <p class="text-[8px] sm:text-[10px] md:text-xs text-gray-400 font-medium uppercase tracking-wider mb-1 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-1">
+            <i class="fa-solid fa-clock text-brand-orange text-[10px] md:text-xs"></i><span class="mt-0.5 md:mt-0">Exp.</span>
+          </p>
+          <p class="font-semibold text-brand-dark text-[9px] sm:text-[11px] md:text-sm leading-tight">15+ Years</p>
+        </div>
+        <div class="flex-1 px-1 sm:px-2 md:px-4 flex justify-center items-center">
+          <a href="services.html"
+            class="bg-brand-orange hover:bg-[#d95632] text-white px-2 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-3 rounded-md md:rounded-xl font-semibold text-[9px] sm:text-xs md:text-sm transition-all shadow-md hover:shadow-lg text-center w-full">
+            Explore
+          </a>
+        </div>
+      </div>
+  </div> <!-- End Peach Background Wrapper -->
+
+
+  <!-- Best Features / Strengths Section -->
+  <section class="py-[60px] md:pt-12 md:pb-24 relative animate-on-scroll" id="features">
+
+    <!-- Left Background Graphic (Concentric Rings) -->
+    <div class="absolute -top-[200px] left-0 w-[400px] h-[400px] pointer-events-none z-0">
+      <svg width="100%" height="100%" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="200" r="120" fill="url(#gradFeaturesLeft)" opacity="0.3" />
+        <circle cx="150" cy="200" r="180" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.15" />
+        <circle cx="150" cy="200" r="230" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.12" />
+        <circle cx="150" cy="200" r="280" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.08" />
+        <circle cx="150" cy="200" r="330" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.05" />
+        <line x1="150" y1="0" x2="150" y2="400" stroke="#f97316" stroke-width="1" opacity="0.15" />
+        <defs>
+          <linearGradient id="gradFeaturesLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Right Background Graphic (Dot Grid) -->
+    <div class="hidden md:block absolute -top-32 md:-top-48 right-0 w-[400px] h-[600px] pointer-events-none z-0 opacity-40"
+      style="background-image: radial-gradient(#f97316 2px, transparent 2px); background-size: 28px 28px; background-position: right top; mask-image: linear-gradient(to bottom left, black 10%, transparent 60%); -webkit-mask-image: linear-gradient(to bottom left, black 10%, transparent 60%);">
+    </div>
+
+    <!-- Top centered text -->
+    <div class="max-w-4xl mx-auto text-center px-6 mb-20 relative z-10">
+      <div class="flex flex-col items-center justify-center mb-6">
+        <p class="text-brand-orange font-bold tracking-[0.15em] uppercase text-sm mb-2">Best Features</p>
+        <div class="flex items-center justify-center w-full max-w-[200px] gap-2">
+          <div class="h-[1px] flex-grow bg-brand-orange/40"></div>
+          <div class="w-1.5 h-1.5 border border-brand-orange rotate-45"></div>
+          <div class="h-[1px] flex-grow bg-brand-orange/40"></div>
+        </div>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 tracking-tight">
+        Our Unique Strengths & <span class="text-brand-orange">Commitment</span>
+      </h2>
+      <p class="text-gray-500 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+        With a robust team of highly trained and skilled professionals, we are committed to delivering the best facility
+        management services tailored exactly to your operational needs. Our commitment to continuous improvement means
+        we constantly evolve our methods based on customer feedback.
+      </p>
+    </div>
+
+    <!-- Timeline Grid -->
+    <div class="max-w-7xl mx-auto px-6 relative z-10 pb-20">
+
+      <!-- Wavy SVG Line (Desktop only) -->
+      <div
+        class="hidden md:block absolute top-[119px] left-6 right-6 h-[40px] -translate-y-1/2 z-0 pointer-events-none">
+        <svg class="w-full h-full" viewBox="0 0 1000 40" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f97316" />
+              <stop offset="12.5%" stop-color="#f97316" />
+              <stop offset="37.5%" stop-color="#14b8a6" />
+              <stop offset="62.5%" stop-color="#3b82f6" />
+              <stop offset="87.5%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#8b5cf6" />
+            </linearGradient>
+          </defs>
+          <path d="M0,20 Q62.5,0 125,20 T250,20 T375,20 T500,20 T625,20 T750,20 T875,20 T1000,20" fill="none"
+            stroke="url(#waveGradient)" stroke-width="1.5"></path>
+        </svg>
+      </div>
+
+      <div class="features-grid grid grid-cols-1 md:grid-cols-4 gap-[40px] md:gap-4 relative z-10">
+
+        <!-- Feature 1 -->
+        <div class="flex flex-col relative group">
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <span class="text-4xl font-semibold text-[#f97316]">01</span>
+            <div
+              class="w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex items-center justify-center relative border-t-[3px] border-l-[3px] border-[#f97316] group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-shield-halved text-[#f97316] text-2xl"></i>
+            </div>
+          </div>
+          <div class="hidden md:flex flex-col items-center mb-6 h-[40px]">
+            <div class="h-6 border-l-2 border-dotted border-gray-300"></div>
+            <div class="w-[14px] h-[14px] rounded-full border-[3px] border-[#f97316] bg-white relative z-10 shadow-sm">
+            </div>
+          </div>
+          <div class="text-center px-2">
+            <h4 class="font-bold text-[1.15rem] text-[#1e293b] mb-3 md:h-12 leading-tight">Quality Services<br>&
+              Punctuality</h4>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              Efficient service delivery and customised solutions. We deploy strictly uniformed and highly trained staff
+              to ensure compliance and rapid execution of all tasks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="flex flex-col relative group">
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <span class="text-4xl font-semibold text-[#14b8a6]">02</span>
+            <div
+              class="w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex items-center justify-center relative border-t-[3px] border-r-[3px] border-[#14b8a6] group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-handshake-angle text-[#14b8a6] text-2xl"></i>
+            </div>
+          </div>
+          <div class="hidden md:flex flex-col items-center mb-6 h-[40px]">
+            <div class="h-6 border-l-2 border-dotted border-gray-300"></div>
+            <div class="w-[14px] h-[14px] rounded-full border-[3px] border-[#14b8a6] bg-white relative z-10 shadow-sm">
+            </div>
+          </div>
+          <div class="text-center px-2">
+            <h4 class="font-bold text-[1.15rem] text-[#1e293b] mb-3 md:h-12 leading-tight">Long-term<br>Relationships
+            </h4>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              We build long-term trust through continuous improvement. By actively integrating customer feedback, we
+              constantly refine our solutions to match your evolving needs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="flex flex-col relative group">
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <span class="text-4xl font-semibold text-[#3b82f6]">03</span>
+            <div
+              class="w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex items-center justify-center relative border-t-[3px] border-l-[3px] border-[#3b82f6] group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-award text-[#3b82f6] text-2xl"></i>
+            </div>
+          </div>
+          <div class="hidden md:flex flex-col items-center mb-6 h-[40px]">
+            <div class="h-6 border-l-2 border-dotted border-gray-300"></div>
+            <div class="w-[14px] h-[14px] rounded-full border-[3px] border-[#3b82f6] bg-white relative z-10 shadow-sm">
+            </div>
+          </div>
+          <div class="text-center px-2">
+            <h4 class="font-bold text-[1.15rem] text-[#1e293b] mb-3 md:h-12 leading-tight">High-Quality<br>Standard</h4>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              We execute seamless services using high-quality, standardized chemicals and state-of-the-art equipment for
+              all our operations, ensuring absolute safety and hygiene.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="flex flex-col relative group">
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <span class="text-4xl font-semibold text-[#8b5cf6]">04</span>
+            <div
+              class="w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex items-center justify-center relative border-b-[3px] border-r-[3px] border-[#8b5cf6] group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-headset text-[#8b5cf6] text-2xl"></i>
+            </div>
+          </div>
+          <div class="hidden md:flex flex-col items-center mb-6 h-[40px]">
+            <div class="h-6 border-l-2 border-dotted border-gray-300"></div>
+            <div class="w-[14px] h-[14px] rounded-full border-[3px] border-[#8b5cf6] bg-white relative z-10 shadow-sm">
+            </div>
+          </div>
+          <div class="text-center px-2">
+            <h4 class="font-bold text-[1.15rem] text-[#1e293b] mb-3 md:h-12 leading-tight">Quick Response<br>& Support
+            </h4>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              Our team is always ready to respond swiftly and effectively. We ensure minimal downtime and maximum
+              satisfaction with our proactive support system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark Navy Arch Background at Bottom -->
+    <div class="absolute bottom-0 left-0 w-full leading-none z-0 h-[100px] md:h-[150px] pointer-events-none">
+      <svg class="absolute bottom-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+        preserveAspectRatio="none">
+        <path d="M-10,0 Q600,120 1210,0 L1210,130 L-10,130 Z" fill="#123e70" stroke="#f97316" stroke-width="3"></path>
+      </svg>
+      <div
+        class="absolute left-1/2 bottom-[15px] md:bottom-[20px] -translate-x-1/2 flex items-center justify-center gap-4 text-[#f97316]">
+        <div class="flex gap-2">
+          <div class="w-1 h-1 bg-[#f97316] rounded-full opacity-90"></div>
+          <div class="w-1 h-1 bg-[#f97316] rounded-full opacity-90"></div>
+          <div class="w-1 h-1 bg-[#f97316] rounded-full opacity-90"></div>
+        </div>
+        <i class="fa-solid fa-city text-xl md:text-2xl opacity-100"></i>
+        <div class="flex gap-2">
+          <div class="w-1 h-1 bg-[#f97316] rounded-full opacity-90"></div>
+          <div class="w-1 h-1 bg-[#f97316] rounded-full opacity-90"></div>
+          <div class="w-1 h-1 bg-[#f97316] rounded-full opacity-90"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Comprehensive Services Section -->
+  <section class="relative w-full animate-on-scroll mt-0" id="services">
+
+    <!-- Full-width Dark Blue Background -->
+    <div class="services-header w-full bg-brand-dark pt-16 sm:pt-28 pb-[160px] sm:pb-[200px] md:pb-[250px] px-4 sm:px-6 relative overflow-hidden">
+      <!-- Subtle Decorative Overlay -->
+      <div class="absolute inset-0 opacity-10"
+        style="background-image: radial-gradient(circle at center, #ffffff 1px, transparent 1px); background-size: 30px 30px;">
+      </div>
+
+      <div class="max-w-7xl mx-auto text-center relative z-20">
+        <p
+          class="text-blue-300 font-bold text-lg mb-2 tracking-widest uppercase flex items-center justify-center gap-2">
+          <i class="fa-solid fa-briefcase text-brand-orange"></i> Comprehensive Solutions
+        </p>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Facility Management Excellence</h2>
+        <p class="text-blue-100 max-w-4xl mx-auto leading-relaxed text-lg">
+          We deliver top-tier operational support, maintenance, and complete facility care. Our highly trained,
+          dedicated teams work around the clock to ensure your corporate environments are safe, pristine, and
+          functioning at their absolute best. From advanced electro-mechanical maintenance and high-rise facade cleaning
+          to specialized housekeeping and intelligent security solutions, PeeJay Hospitality integrates industry-leading
+          practices to elevate your infrastructure's efficiency and longevity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Floating 11-Card Slider Overlapping -->
+    <div class="w-full relative z-30 -mt-[180px] md:-mt-[240px]">
+      <style>
+        .service-carousel {
+          display: flex;
+          gap: 1rem;
+          overflow-x: auto;
+          /* Enables manual scrolling */
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          padding: 0 calc(50% - 90px);
+          /* Centers 180px card on mobile */
+          align-items: center;
+          /* Ensures cards grow from their vertical center */
+          min-height: 350px;
+        }
+
+        .service-carousel::-webkit-scrollbar {
+          display: none;
+        }
+
+        .service-card {
+          scroll-snap-align: center;
+          flex: 0 0 180px;
+          height: 240px !important;
+          /* Override tailwind utility */
+          transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+          opacity: 0.3;
+          filter: grayscale(80%) blur(2px);
+          cursor: pointer;
+          border: 3px solid #3b82f6;
+          /* Blue border */
+        }
+
+        @media (min-width: 768px) {
+          .service-card {
+            flex: 0 0 180px;
+            height: 260px !important;
+          }
+
+          .service-carousel {
+            padding: 0 calc(50% - 130px);
+            gap: 1.5rem;
+            min-height: 420px;
+          }
+        }
+
+        .service-card.active-card {
+          opacity: 1;
+          flex: 0 0 200px;
+          height: 300px !important;
+          /* Grows layout, text remains same size */
+          filter: grayscale(0%) blur(0px);
+          z-index: 40;
+          border-color: transparent;
+          /* Remove blue border when active */
+          box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (min-width: 768px) {
+          .service-card.active-card {
+            flex: 0 0 260px;
+            height: 380px !important;
+            /* Grows layout on desktop */
+          }
+        }
+
+        .service-card.adjacent-card {
+          opacity: 0.8;
+          filter: grayscale(40%) blur(0px);
+          z-index: 30;
+        }
+      </style>
+
+      <div class="service-carousel pb-24 pt-4" id="servicesCarousel">
+
+        <!-- Card 1 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1584738766473-61c083514bf4?w=600&q=80" alt="Landscaping"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Landscaping</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Corporate Gardens</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80" alt="Housekeeping"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Housekeeping</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Public Areas & Malls</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80" alt="Hospitality"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Hospitality</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Hostels & Mess</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=80" alt="Security"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Security</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Manned Guarding</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="Electro-Mechanical"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Electro-Mech</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">HVAC, Generators</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80" alt="Pantry Services"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Pantry</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Corporate Pantries</p>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?w=600&q=80" alt="Facade Cleaning"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Facade</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">High-Rise Glass</p>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?w=600&q=80" alt="Pest Control"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Pest Control</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Commercial Spraying</p>
+          </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80" alt="Waste Management"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Waste Mgmt</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Recycling Programs</p>
+          </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80" alt="Plumbing & Carpentry"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Plumbing</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Routine Maintenance</p>
+          </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div
+          class="service-card group relative h-[280px] md:h-[320px] rounded-[15px_60px_15px_60px] overflow-hidden bg-white"
+          onclick="this.scrollIntoView({behavior: 'smooth', inline: 'center'})">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Deep Cleaning"
+            class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-tr-[50px] rounded-bl-[60px]">
+            <h3 class="font-bold text-brand-dark text-lg md:text-xl mb-1">Deep Cleaning</h3>
+            <p class="text-xs text-gray-500 line-clamp-1">Floor & Upholstery</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      window.serviceDetails = {
+        "Landscaping": "Our professional landscaping services ensure your corporate gardens and outdoor areas are beautifully maintained, creating a welcoming environment for employees and clients alike.",
+        "Housekeeping": "We provide comprehensive housekeeping for public areas, malls, and offices, using industry-leading practices to maintain impeccable hygiene and cleanliness standards.",
+        "Hospitality": "Our hospitality division specializes in hostels, mess management, and guesthouses, ensuring top-tier service, food quality, and comfort for all residents and guests.",
+        "Security": "Manned guarding and advanced security solutions tailored to your infrastructure. Our highly trained personnel ensure a safe and secure environment 24/7.",
+        "Electro-Mech": "Expert maintenance for HVAC, generators, plumbing, and electrical systems. We ensure your critical mechanical infrastructure runs smoothly with zero downtime.",
+        "Pantry": "Premium corporate pantry services with well-trained staff, ensuring seamless food and beverage operations for your corporate offices and executive meetings.",
+        "Facade": "High-rise glass and facade cleaning using advanced rope-access and cradle systems. We keep your building exteriors looking pristine and professional.",
+        "Pest Control": "Commercial spraying and comprehensive pest management programs designed to eliminate infestations safely and prevent future occurrences.",
+        "Waste Mgmt": "Eco-friendly recycling and waste management programs. We handle collection, segregation, and disposal to help you meet your sustainability goals.",
+        "Plumbing": "Routine and emergency plumbing maintenance. Our certified technicians handle repairs, installations, and system upgrades with precision.",
+        "Deep Cleaning": "Intensive floor, upholstery, and deep cleaning services to restore and sanitize your facilities, utilizing high-grade equipment and eco-friendly chemicals."
+      };
+
+      window.isModalOpen = false;
+
+      window.handleCardClick = function (cardElement) {
+        if (cardElement.classList.contains("active-card")) {
+          const title = cardElement.querySelector("h3").innerText;
+          const subtitle = cardElement.querySelector("p").innerText;
+          const img = cardElement.querySelector("img").src;
+
+          document.getElementById("modalTitle").innerText = title;
+          document.getElementById("modalSubtitle").innerText = subtitle;
+          document.getElementById("modalImage").src = img;
+          document.getElementById("modalDescription").innerText = window.serviceDetails[title] || "More details coming soon.";
+
+          const modal = document.getElementById("serviceModal");
+          modal.classList.remove("opacity-0", "pointer-events-none");
+          modal.querySelector("#serviceModalContent").classList.remove("scale-95");
+          modal.querySelector("#serviceModalContent").classList.add("scale-100");
+          window.isModalOpen = true;
+        } else {
+          cardElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      };
+
+      window.closeModal = function () {
+        const modal = document.getElementById("serviceModal");
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modal.querySelector("#serviceModalContent").classList.add("scale-95");
+        modal.querySelector("#serviceModalContent").classList.remove("scale-100");
+        window.isModalOpen = false;
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.getElementById("servicesCarousel");
+        const originalCards = Array.from(carousel.querySelectorAll(".service-card"));
+        let autoScrollInterval;
+
+        // Override original card clicks
+        originalCards.forEach(card => {
+          card.onclick = function () { window.handleCardClick(this); };
+        });
+
+        // Prepend 10 sets to give a huge buffer for left-scrolling
+        for (let i = 0; i < 10; i++) {
+          originalCards.forEach(card => {
+            let clone = card.cloneNode(true);
+            clone.onclick = function () { window.handleCardClick(this); };
+            carousel.insertBefore(clone, originalCards[0]);
+          });
+        }
+
+        // Append 10 sets to perfectly fill the right side initially
+        for (let i = 0; i < 10; i++) {
+          originalCards.forEach(card => {
+            let clone = card.cloneNode(true);
+            clone.onclick = function () { window.handleCardClick(this); };
+            carousel.appendChild(clone);
+          });
+        }
+
+        let cards = Array.from(carousel.querySelectorAll(".service-card"));
+
+        function updateCards() {
+          const carouselCenter = carousel.getBoundingClientRect().left + carousel.getBoundingClientRect().width / 2;
+          let closestIndex = 0;
+          let closestDistance = Infinity;
+
+          cards.forEach((card, index) => {
+            const cardCenter = card.getBoundingClientRect().left + card.getBoundingClientRect().width / 2;
+            const distance = Math.abs(carouselCenter - cardCenter);
+
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestIndex = index;
+            }
+          });
+
+          cards.forEach((card, index) => {
+            card.classList.remove("active-card", "adjacent-card");
+            if (index === closestIndex) {
+              card.classList.add("active-card");
+            } else if (index === closestIndex - 1 || index === closestIndex + 1) {
+              card.classList.add("adjacent-card");
+            }
+          });
+
+          // Infinite right-scroll dynamic appending buffer
+          if (cards.length - closestIndex < 15) {
+            originalCards.forEach(card => {
+              let clone = card.cloneNode(true);
+              clone.onclick = function () { window.handleCardClick(this); };
+              carousel.appendChild(clone);
+            });
+            cards = Array.from(carousel.querySelectorAll(".service-card"));
+          }
+        }
+
+        carousel.addEventListener("scroll", () => {
+          window.requestAnimationFrame(updateCards);
+        });
+
+        // Initial setup: instantly jump to the middle of our buffer so left and right are filled
+        setTimeout(() => {
+          // We prepended 10 sets of 11 cards = 110 cards. The middle starts at index 110.
+          const startCard = cards[originalCards.length * 10];
+          const scrollTarget = startCard.offsetLeft - (carousel.clientWidth / 2) + (startCard.clientWidth / 2);
+          carousel.scrollLeft = scrollTarget; // Instantly scroll
+          updateCards();
+        }, 50);
+
+        function startAutoScroll() {
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = setInterval(() => {
+            if (window.isModalOpen) return;
+
+            let activeCard = carousel.querySelector(".active-card");
+            if (!activeCard && cards.length > 0) activeCard = cards[originalCards.length];
+            if (!activeCard) return;
+
+            let activeIndex = cards.indexOf(activeCard);
+
+            // Circular infinite loop: dynamically clone cards when near the right end
+            if (cards.length - activeIndex < 6) {
+              originalCards.forEach(card => {
+                let clone = card.cloneNode(true);
+                clone.onclick = function () { window.handleCardClick(this); };
+                carousel.appendChild(clone);
+              });
+              cards = Array.from(carousel.querySelectorAll(".service-card"));
+            }
+
+            let nextCard = activeCard.nextElementSibling;
+            if (nextCard) {
+              const scrollTarget = nextCard.offsetLeft - (carousel.clientWidth / 2) + (nextCard.clientWidth / 2);
+              carousel.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+            }
+          }, 3000);
+        }
+
+        // Start autoscroll after the initial jump has completed
+        setTimeout(startAutoScroll, 100);
+
+        // Pause auto-scroll when user interacts, restart when they leave
+        carousel.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+        carousel.addEventListener('mouseleave', startAutoScroll);
+        carousel.addEventListener('touchstart', () => clearInterval(autoScrollInterval), { passive: true });
+        carousel.addEventListener('touchend', startAutoScroll, { passive: true });
+      });
+    </script>
+
+    <!-- Service Details Modal -->
+    <div id="serviceModal"
+      class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+      <div
+        class="bg-white rounded-[15px_60px_15px_60px] overflow-hidden w-full max-w-lg h-[80vh] min-h-[450px] relative z-10 transform scale-95 transition-transform duration-300 shadow-2xl"
+        id="serviceModalContent">
+        <button onclick="closeModal()"
+          class="absolute top-4 right-4 z-20 text-gray-800 hover:text-brand-orange bg-white/80 backdrop-blur hover:bg-white rounded-full w-10 h-10 flex items-center justify-center transition-colors shadow">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        <img id="modalImage" src="" class="w-full h-full object-cover" />
+        <div class="absolute bottom-0 left-0 right-0 bg-white p-6 md:p-10 rounded-tr-[80px] rounded-bl-[60px]">
+          <h3 id="modalTitle" class="text-3xl font-bold text-brand-dark mb-2"></h3>
+          <p id="modalSubtitle" class="text-sm tracking-wide text-brand-orange font-semibold uppercase mb-4"></p>
+          <div class="max-h-[35vh] overflow-y-auto pr-4 custom-scrollbar">
+            <p id="modalDescription" class="text-gray-600 leading-relaxed text-base md:text-lg"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience / Industries Section -->
+  <section class="py-[60px] md:pt-8 md:pb-24 bg-[#fbfbfb] relative overflow-hidden animate-on-scroll" id="experience">
+    <style>
+      .blob-1 {
+        border-radius: 46% 54% 39% 61% / 46% 37% 63% 54%;
+      }
+
+      .blob-2 {
+        border-radius: 63% 37% 53% 47% / 43% 58% 42% 57%;
+      }
+
+      .blob-3 {
+        border-radius: 36% 64% 46% 54% / 59% 48% 52% 41%;
+      }
+    </style>
+
+    <!-- Top-left 3x3 dot grid -->
+    <div class="absolute top-12 left-8 md:left-12 grid grid-cols-3 gap-3 opacity-30">
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+      <div class="w-1 h-1 bg-brand-dark rounded-full"></div>
+    </div>
+    <!-- Top-right 3x3 dot grid -->
+    <div class="absolute top-12 right-8 md:right-12 grid grid-cols-3 gap-3 opacity-30">
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center px-6 mb-16 relative z-10">
+      <div class="flex flex-col items-center justify-center mb-6">
+        <div class="w-2.5 h-2.5 bg-[#ea580c] rotate-45 mb-3"></div>
+        <div class="flex items-center justify-center gap-4">
+          <div class="h-[1px] w-12 bg-[#ea580c]"></div>
+          <p class="text-[#ea580c] font-bold tracking-[0.2em] uppercase text-xs">Experience</p>
+          <div class="h-[1px] w-12 bg-[#ea580c]"></div>
+        </div>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-2 tracking-tight">
+        Industries We Excel In,<br>
+        <span class="text-[#ea580c]">Results We Deliver</span>
+      </h2>
+      <div class="flex items-center justify-center gap-2 mb-8">
+        <div class="h-[1px] w-16 bg-brand-dark/30"></div>
+        <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+        <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+        <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+      </div>
+      <p class="text-gray-500 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+        With a proven track record across diverse high-demand sectors, we understand unique operational challenges and
+        deliver facility management solutions that ensure compliance, hygiene, and exceptional experiences.
+      </p>
+    </div>
+
+    <!-- Blob Columns Container -->
+    <div class="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
+
+        <!-- Column 1 -->
+        <div class="industry-col flex flex-col md:flex-row items-center gap-6 group p-[20px] md:p-0">
+          <!-- Text Content -->
+          <div class="industry-text w-full md:w-[45%] flex flex-col">
+            <div
+              class="w-10 h-10 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-sm mb-2">
+              01</div>
+            <div class="flex gap-1 mb-2">
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark leading-tight mb-3">Hotels &<br>Hospitality</h3>
+            <div class="w-6 h-[2px] bg-[#ea580c] mb-4"></div>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              Delivering exceptional housekeeping and facility management services to luxury hotels, resorts, and
+              hospitality chains.
+            </p>
+          </div>
+          <!-- Image Blob -->
+          <div class="industry-img w-[180px] h-[220px] mx-auto md:w-[55%] md:h-[280px] relative">
+            <div
+              class="absolute inset-0 border border-[#ea580c] blob-1 -translate-x-3 -translate-y-1 transition-transform duration-500 group-hover:-translate-x-5">
+            </div>
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&w=600&q=80"
+              alt="Hotels" class="absolute inset-0 w-full h-full object-cover blob-1">
+            <div
+              class="absolute bottom-2 right-4 w-12 h-12 bg-[#ea580c] rounded-full border-[3px] border-white flex items-center justify-center text-white shadow-lg z-10 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-hotel text-lg"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="industry-col flex flex-col md:flex-row items-center gap-6 group p-[20px] md:p-0">
+          <!-- Text Content -->
+          <div class="industry-text w-full md:w-[45%] flex flex-col">
+            <div
+              class="w-10 h-10 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-sm mb-2">
+              02</div>
+            <div class="flex gap-1 mb-2">
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark leading-tight mb-3">Colleges<br>& IT Parks</h3>
+            <div class="w-6 h-[2px] bg-[#ea580c] mb-4"></div>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              Maintaining clean, safe, and productive environments in educational institutions and corporate IT
+              campuses.
+            </p>
+          </div>
+          <!-- Image Blob -->
+          <div class="industry-img w-[180px] h-[220px] mx-auto md:w-[55%] md:h-[280px] relative">
+            <div
+              class="absolute inset-0 border border-[#ea580c] blob-2 -translate-x-3 -translate-y-1 transition-transform duration-500 group-hover:-translate-x-5">
+            </div>
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&w=600&q=80"
+              alt="Colleges" class="absolute inset-0 w-full h-full object-cover blob-2">
+            <div
+              class="absolute bottom-2 right-4 w-12 h-12 bg-[#ea580c] rounded-full border-[3px] border-white flex items-center justify-center text-white shadow-lg z-10 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-graduation-cap text-lg"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="industry-col flex flex-col md:flex-row items-center gap-6 group p-[20px] md:p-0">
+          <!-- Text Content -->
+          <div class="industry-text w-full md:w-[45%] flex flex-col">
+            <div
+              class="w-10 h-10 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-sm mb-2">
+              03</div>
+            <div class="flex gap-1 mb-2">
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+              <div class="w-1 h-1 bg-[#ea580c] rounded-full"></div>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark leading-tight mb-3">Hospitals<br>& Malls</h3>
+            <div class="w-6 h-[2px] bg-[#ea580c] mb-4"></div>
+            <p class="text-gray-500 text-[13px] leading-relaxed">
+              Ensuring hygiene, safety, and seamless operations for hospitals, healthcare centres, and large shopping
+              malls.
+            </p>
+          </div>
+          <!-- Image Blob -->
+          <div class="industry-img w-[180px] h-[220px] mx-auto md:w-[55%] md:h-[280px] relative">
+            <div
+              class="absolute inset-0 border border-[#ea580c] blob-3 -translate-x-3 -translate-y-1 transition-transform duration-500 group-hover:-translate-x-5">
+            </div>
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&w=600&q=80"
+              alt="Hospitals" class="absolute inset-0 w-full h-full object-cover blob-3">
+            <div
+              class="absolute bottom-2 right-4 w-12 h-12 bg-[#ea580c] rounded-full border-[3px] border-white flex items-center justify-center text-white shadow-lg z-10 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-shopping-bag text-lg"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Background Shapes for Stats Bar -->
+    <div
+      class="hidden md:block absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-brand-dark rounded-tr-[100%] z-0 pointer-events-none">
+      <div class="absolute top-10 left-10 grid grid-cols-4 gap-3 opacity-20">
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+        <div class="w-1 h-1 bg-white rounded-full"></div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 md:w-80 md:h-80 pointer-events-none z-0 overflow-hidden opacity-50">
+      <div
+        class="absolute bottom-0 right-0 w-[200%] h-[200%] translate-x-1/2 translate-y-1/2 rounded-full border border-[#ea580c]/30">
+      </div>
+      <div
+        class="absolute bottom-0 right-0 w-[160%] h-[160%] translate-x-1/2 translate-y-1/2 rounded-full border border-[#ea580c]/50">
+      </div>
+      <div
+        class="absolute bottom-0 right-0 w-[120%] h-[120%] translate-x-1/2 translate-y-1/2 rounded-full border border-[#ea580c] bg-[#ea580c]/10">
+      </div>
+      <div class="absolute bottom-0 right-0 w-[80%] h-[80%] translate-x-1/2 translate-y-1/2 rounded-full bg-[#ea580c]">
+      </div>
+    </div>
+
+    <!-- Bottom Stats Bar -->
+    <div class="max-w-[1100px] mx-auto mt-16 sm:mt-24 md:mt-32 relative z-10 px-4 md:px-0">
+      <div
+        class="stats-inner bg-white rounded-[30px] md:rounded-full py-6 md:py-8 px-6 sm:px-8 md:px-12 grid grid-cols-2 sm:flex sm:flex-row items-center justify-between shadow-[0_20px_60px_rgba(0,0,0,0.08)] gap-[16px] sm:gap-4 md:gap-0 border border-gray-100">
+
+        <!-- Stat 1 -->
+        <div class="flex items-center gap-4 w-full md:w-auto">
+          <div
+            class="w-14 h-14 rounded-full border-[1.5px] border-[#ea580c]/40 bg-orange-50 flex items-center justify-center text-[#ea580c] shrink-0">
+            <i class="fa-solid fa-users text-xl"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-brand-dark font-extrabold text-2xl">50+</span>
+            <span class="text-gray-500 text-sm">Happy Clients</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="stats-divider hidden md:block w-px h-12 bg-gray-200"></div>
+
+        <!-- Stat 2 -->
+        <div class="flex items-center gap-4 w-full md:w-auto">
+          <div
+            class="w-14 h-14 rounded-full border-[1.5px] border-[#ea580c]/40 bg-orange-50 flex items-center justify-center text-[#ea580c] shrink-0">
+            <i class="fa-solid fa-award text-xl"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-brand-dark font-extrabold text-2xl">10+</span>
+            <span class="text-gray-500 text-sm">Sectors Served</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden md:block w-px h-12 bg-gray-200"></div>
+
+        <!-- Stat 3 -->
+        <div class="flex items-center gap-4 w-full md:w-auto">
+          <div
+            class="w-14 h-14 rounded-full border-[1.5px] border-[#ea580c]/40 bg-orange-50 flex items-center justify-center text-[#ea580c] shrink-0">
+            <i class="fa-solid fa-shield-halved text-xl"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-brand-dark font-extrabold text-2xl">100%</span>
+            <span class="text-gray-500 text-sm">Compliance</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden md:block w-px h-12 bg-gray-200"></div>
+
+        <!-- Stat 4 -->
+        <div class="flex items-center gap-4 w-full md:w-auto">
+          <div
+            class="w-14 h-14 rounded-full border-[1.5px] border-[#ea580c]/40 bg-orange-50 flex items-center justify-center text-[#ea580c] shrink-0">
+            <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-brand-dark font-extrabold text-2xl">Premium</span>
+            <span class="text-gray-500 text-sm">Service Quality</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Container -->
+  <div class="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 mt-8 sm:mt-10 animate-on-scroll">
+    <footer
+      class="bg-brand-dark text-white pt-10 pb-4 rounded-[30px] md:rounded-[40px] relative overflow-hidden shadow-2xl">
+
+      <!-- Background Waves -->
+      <svg class="absolute bottom-0 left-0 w-full z-0 opacity-[0.30] pointer-events-none" style="min-height:80px;" viewBox="0 0 1440 320"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill="none" stroke="#ea580c" stroke-width="2"
+          d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,229.3C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192">
+        </path>
+        <path fill="none" stroke="#ea580c" stroke-width="1"
+          d="M0,256L48,229.3C96,203,192,149,288,144C384,139,480,181,576,197.3C672,213,768,203,864,181.3C960,160,1056,128,1152,133.3C1248,139,1344,181,1392,202.7L1440,224">
+        </path>
+        <path fill="none" stroke="#ea580c" stroke-width="1.5"
+          d="M0,320L60,309.3C120,299,240,277,360,245.3C480,213,600,171,720,165.3C840,160,960,192,1080,202.7C1200,213,1320,203,1380,197.3L1440,192">
+        </path>
+      </svg>
+
+      <!-- Main Footer Grid -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0 relative z-10 max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+
+        <!-- Column 1: Brand Info -->
+        <div class="flex flex-col items-start pr-0 lg:pr-10">
+          <div class="mb-4 bg-white p-2 rounded-xl inline-block">
+            <img src="./logo.png" alt="PeeJay Logo" class="h-10 w-auto object-contain" />
+          </div>
+          <div class="w-10 h-[2px] bg-[#ea580c] mb-4"></div>
+          <p class="text-[12px] text-gray-300 mb-6 leading-relaxed">
+            Leading facility management company in Andhra Pradesh. Founded in 2009 by Mrs. M. Naga Lakshmi. Offering
+            comprehensive services in corporate housekeeping, horticulture, and landscaping.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-brands fa-facebook-f text-[14px]"></i></a>
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-brands fa-linkedin-in text-[14px]"></i></a>
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-brands fa-instagram text-[14px]"></i></a>
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-regular fa-envelope text-[14px]"></i></a>
+          </div>
+        </div>
+
+        <!-- Columns 2 & 3: Quick Links + Contact Us — side by side on mobile -->
+        <div class="lg:contents grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 lg:gap-0 col-span-1 lg:col-span-2">
+
+        <!-- Column 2: Quick Links -->
+        <div class="flex flex-col items-start lg:border-l border-white/10 lg:pl-10 lg:pr-6">
+          <h4 class="font-bold text-base mb-2 text-white flex items-center gap-2">
+            <i class="fa-solid fa-link text-[#ea580c] text-xs"></i> Quick Links
+          </h4>
+          <div class="w-8 h-[2px] bg-[#ea580c] mb-5"></div>
+          <ul class="text-[13px] text-gray-300 space-y-3 w-full">
+            <li><a href="index.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                  class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> Home</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                  class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> About Us</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                  class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> All Services</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                  class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        <!-- Column 3: Contact Us -->
+        <div class="flex flex-col items-start lg:border-l border-white/10 lg:pl-10">
+          <h4 class="font-bold text-base mb-2 text-white flex items-center gap-2">
+            <i class="fa-solid fa-phone-volume text-[#ea580c] text-xs"></i> Contact Us
+          </h4>
+          <div class="w-8 h-[2px] bg-[#ea580c] mb-5"></div>
+          <ul class="text-[13px] text-gray-300 space-y-4 w-full">
+            <li class="flex items-start gap-2 sm:gap-4 group">
+              <div
+                class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                <i class="fa-solid fa-location-dot text-white text-[10px]"></i></div>
+              <span class="leading-relaxed">D.No. 10-53-239, Block No. 22/4, Ram Nagar, Visakhapatnam - 530 002.</span>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-4 group">
+              <div
+                class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                <i class="fa-solid fa-envelope text-white text-[10px]"></i></div>
+              <a href="mailto:peejayhospitalityservices@gmail.com"
+                class="hover:text-white transition-colors leading-relaxed break-all">peejayhospitalityservices@gmail.com</a>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-4 group">
+              <div
+                class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                <i class="fa-solid fa-phone text-white text-[10px]"></i></div>
+              <a href="tel:+919849553755" class="hover:text-white transition-colors leading-relaxed">+91 9849553755</a>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-4 group">
+              <div
+                class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                <i class="fa-solid fa-clock text-white text-[10px]"></i></div>
+              <span class="leading-relaxed">Mon - Sat: 9:00 AM - 6:00 PM</span>
+            </li>
+          </ul>
+        </div><!-- end Column 3: Contact Us -->
+        </div><!-- end 2-col quick links + contact wrapper -->
+
+      </div>
+
+      <!-- Bottom Section -->
+      <div
+        class="relative z-10 border-t border-white/10 pt-5 px-6 lg:px-12 flex flex-col md:flex-row items-center justify-center md:justify-start min-h-[60px]">
+
+        <!-- Copyright & Policies -->
+        <div
+          class="text-[11px] md:text-[12px] text-gray-400 flex flex-col md:flex-row items-center gap-3 md:gap-5 z-20">
+          <span>&copy; 2026 PeeJay Hospitality Services. All rights reserved.</span>
+          <span class="hidden md:inline text-[#ea580c]">|</span>
+          <div class="flex items-center gap-5 mt-2 md:mt-0">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <span class="text-[#ea580c]">|</span>
+            <a href="#" class="hover:text-white transition-colors">Terms & Conditions</a>
+          </div>
+        </div>
+
+        <!-- City Skyline SVG Graphic -->
+        <div class="absolute right-4 sm:right-8 bottom-0 w-28 h-16 sm:w-40 sm:h-20 md:w-56 md:h-28 opacity-70 pointer-events-none z-10 block">
+          <svg viewBox="0 0 240 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMaxYMax meet">
+            <g stroke="#ea580c" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Small Trees / Bushes -->
+              <path d="M10,95 C5,80 20,80 15,95 M12,85 L12,95" />
+              <path d="M210,95 C200,75 220,75 215,95 M212,85 L212,95" />
+              <path d="M225,95 C220,85 235,85 230,95 M228,90 L228,95" />
+
+              <!-- Birds -->
+              <path d="M160,20 Q165,15 170,20 Q175,15 180,20" stroke-width="0.5" />
+              <path d="M190,10 Q194,7 198,10 Q202,7 206,10" stroke-width="0.5" />
+
+              <!-- Background Buildings -->
+              <rect x="30" y="40" width="25" height="55" opacity="0.3" />
+              <rect x="160" y="50" width="30" height="45" opacity="0.3" />
+              <polygon points="160,50 175,40 190,50" opacity="0.3" />
+
+              <!-- Main Buildings -->
+              <rect x="50" y="30" width="35" height="65" />
+              <line x1="60" y1="35" x2="60" y2="90" stroke-dasharray="3 3" />
+              <line x1="75" y1="35" x2="75" y2="90" stroke-dasharray="3 3" />
+
+              <!-- Tall Central Tower -->
+              <rect x="95" y="15" width="40" height="80" />
+              <rect x="105" y="5" width="20" height="10" />
+              <line x1="115" y1="0" x2="115" y2="5" />
+              <line x1="100" y1="30" x2="130" y2="30" />
+              <line x1="100" y1="45" x2="130" y2="45" />
+              <line x1="100" y1="60" x2="130" y2="60" />
+              <line x1="100" y1="75" x2="130" y2="75" />
+
+              <!-- Right Building -->
+              <rect x="145" y="40" width="35" height="55" />
+              <rect x="155" y="45" width="5" height="45" />
+              <rect x="165" y="45" width="5" height="45" />
+
+              <!-- Ground Line -->
+              <line x1="0" y1="95" x2="240" y2="95" stroke-width="1.5" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+    </footer>
+  </div>
+
+  <!-- Intersection Observer Script for Scroll Animations -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      const observer = new IntersectionObserver((entries) => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const isScrollingDown = scrollTop > lastScrollTop;
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (isScrollingDown) {
+              entry.target.style.setProperty('--scroll-translate', '40px');
+            } else {
+              entry.target.style.setProperty('--scroll-translate', '-40px');
+            }
+            void entry.target.offsetHeight; // force reflow
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      }, observerOptions);
+
+      // Distribute animation to individual elements instead of large wrappers
+      const wrappers = document.querySelectorAll('.animate-on-scroll');
+      wrappers.forEach(wrapper => {
+        const elements = wrapper.querySelectorAll('.grid > div, .features-grid > div, .text-center, .hero-blob, .bg-white.rounded-xl, .bg-brand-dark.rounded-2xl, .text-left, .relative > img, .flex-row > div, .flex-row-reverse > div');
+        
+        if (elements.length > 0) {
+          wrapper.classList.remove('animate-on-scroll');
+          elements.forEach(el => el.classList.add('animate-on-scroll'));
+        }
+      });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+
+</html>

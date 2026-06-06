@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | PeeJay Group Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Stylish Icons: FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f26842',
+              light: '#fdf7f3',
+              dark: '#123e70',
+              text: '#4a4a4a',
+              teal: '#2cb9aa',
+              bg: '#fcf9f5'
+            }
+          },
+          fontFamily: { sans: ['Poppins', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(var(--scroll-translate, 30px));
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Dots Pattern */
+    .bg-dots {
+      background-image: radial-gradient(#f26842 2px, transparent 2px);
+      background-size: 16px 16px;
+    }
+
+    .bg-dots-teal {
+      background-image: radial-gradient(#2cb9aa 2px, transparent 2px);
+      background-size: 16px 16px;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-brand-text font-sans overflow-x-hidden">
+
+  <!-- Hero Section Wrapper -->
+  <div class="relative pb-12 lg:pb-32 z-10">
+    <!-- Desktop Diagonal Peach Wave Background -->
+    <div class="hidden md:block absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[110%] lg:h-full overflow-hidden -z-20 pointer-events-none">
+      <svg viewBox="0 0 1440 900" class="w-full h-[110%] lg:h-full" preserveAspectRatio="none">
+        <path fill="#fef4ec" d="M0,0 L1440,0 L1440,550 C 1200,300 600,1100 0,650 Z"></path>
+      </svg>
+    </div>
+
+    <!-- Mobile Peach Wave Background (Normal Bottom Wave) -->
+    <div class="block md:hidden absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[105%] overflow-hidden -z-20 pointer-events-none">
+      <svg viewBox="0 0 1440 1200" class="w-full h-full" preserveAspectRatio="none">
+        <path fill="#fef4ec" d="M0,0 L1440,0 L1440,1050 C 1200,1200 600,1000 0,1100 Z"></path>
+      </svg>
+    </div>
+
+  <!-- Navbar -->
+  <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center relative z-50">
+    <div class="flex-shrink-0">
+      <a href="index.html">
+        <img src="./logo.png" alt="PeeJay Logo" class="w-32 sm:w-40 md:w-48 h-auto object-contain" />
+      </a>
+    </div>
+
+    <!-- Desktop Menu (Centered) -->
+    <div class="hidden md:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
+      <a href="index.html" class="text-brand-dark transition-colors hover:text-brand-orange">HOME</a>
+      <a href="services.html" class="text-brand-dark transition-colors hover:text-brand-orange">SERVICES</a>
+      <a href="about.html" class="text-brand-orange transition-colors hover:text-brand-orange">ABOUT</a>
+      <a href="contact.html" class="text-brand-dark transition-colors hover:text-brand-orange">CONTACT</a>
+    </div>
+
+    <div class="hidden md:flex flex-shrink-0">
+      <a href="contact.html"
+        class="bg-brand-orange hover:bg-[#d95632] text-white px-8 py-3 rounded-full text-sm font-semibold transition-all hover:shadow-[0_10px_20px_rgba(242,104,66,0.3)]">
+        Contact Us
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn" class="md:hidden ml-auto text-2xl text-brand-dark focus:outline-none z-[60] relative"
+      onclick="toggleMobileMenu()">
+      <i id="menuIcon" class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobileOverlay"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[55] hidden md:hidden"
+      onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu"
+      class="fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-white z-[60] shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+        <a href="index.html">
+          <img src="./logo.png" alt="PeeJay Logo" class="h-10 w-auto object-contain" />
+        </a>
+        <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-brand-dark transition-colors">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Links -->
+      <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
+        <a href="index.html"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+          <i class="fa-solid fa-house text-xs"></i> HOME
+        </a>
+        <a href="services.html"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+          <i class="fa-solid fa-briefcase text-xs"></i> SERVICES
+        </a>
+        <a href="about.html"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-orange font-bold text-sm bg-orange-50 border-l-4 border-brand-orange">
+          <i class="fa-solid fa-building-user text-xs"></i> ABOUT
+        </a>
+        <a href="contact.html"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+          <i class="fa-solid fa-phone text-xs"></i> CONTACT
+        </a>
+      </nav>
+
+      <!-- Drawer Footer CTA -->
+      <div class="px-6 pb-8">
+        <a href="contact.html"
+          class="block w-full bg-brand-orange hover:bg-[#d95632] text-white py-3 rounded-xl font-semibold text-sm text-center transition-all shadow-md">
+          <i class="fa-solid fa-arrow-right mr-2"></i> Contact Us
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('mobileOverlay');
+      const icon = document.getElementById('menuIcon');
+      const isOpen = !menu.classList.contains('translate-x-full');
+      if (isOpen) {
+        menu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        icon.className = 'fa-solid fa-bars';
+        document.body.style.overflow = '';
+      } else {
+        menu.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+        icon.className = 'fa-solid fa-xmark';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  </script>
+
+  <!-- Hero Section -->
+  <section class="relative pt-6 pb-24 lg:pb-32 z-10 animate-on-scroll">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+      <!-- Left Content -->
+      <div class="text-center lg:text-left order-2 lg:order-1 mt-10 lg:mt-0">
+        <p class="text-brand-orange font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-center lg:justify-start gap-2">
+          <i class="fa-solid fa-tag transform -rotate-45"></i> Built on Trust. Driven by Excellence.
+        </p>
+        <h1 class="text-[32px] sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-brand-dark leading-[1.1] mb-6 tracking-tight">
+          A Legacy of<br>Excellence in<br>Facility Management
+        </h1>
+        <p class="text-brand-text leading-relaxed mb-10 text-sm font-medium">
+          For over 50 years, PeeJay Group Services has been a trusted partner in delivering world-class facility
+          management solutions. With a commitment to quality, innovation, and customer satisfaction, we create cleaner,
+          safer, and smarter environments that empower businesses to thrive.
+        </p>
+
+        <!-- Our Promise (Moved into Hero) -->
+        <div class="flex flex-col items-center lg:items-start gap-3 mt-6">
+          <p class="text-brand-orange font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.2em] mb-1 flex items-center gap-2">
+            <i class="fa-solid fa-star"></i> Our Promise
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 items-start w-full sm:w-auto px-4 sm:px-0">
+            <!-- Stat 1 -->
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-award text-sm"></i>
+              </div>
+              <span class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Consistent<br>Quality</span>
+            </div>
+            <!-- Stat 2 -->
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-teal-50 text-brand-teal flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-handshake-simple text-sm"></i>
+              </div>
+              <span class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Reliable<br>Service</span>
+            </div>
+            <!-- Stat 3 -->
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-heart text-sm"></i>
+              </div>
+              <span class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Customer<br>Focus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Content (Image with Dots) -->
+      <div class="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+        <!-- Dots top right -->
+        <div class="absolute -top-10 -right-8 w-40 h-40 bg-dots z-0 opacity-40"></div>
+        <!-- Dots bottom left -->
+        <div class="absolute -bottom-10 -left-8 w-40 h-40 bg-dots-teal z-0 opacity-40"></div>
+
+        <div class="relative z-10 w-full max-w-[550px] mt-8 lg:mt-0">
+          <div class="rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white p-2">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Server Room" class="w-full h-auto aspect-[4/3] object-cover rounded-[32px]" />
+          </div>
+          <!-- Floating Badge (Top Left) -->
+          <div class="absolute -top-6 -left-6 sm:-top-8 sm:-left-12 bg-white rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.12)] py-3 px-5 flex flex-col items-center justify-center z-20 border border-gray-50 min-w-[120px]">
+            <div class="text-brand-orange text-[28px] font-black leading-none tracking-tight mb-1">
+              500<span class="text-brand-orange ml-0.5">+</span>
+            </div>
+            <span class="text-brand-dark text-[9px] font-extrabold text-center uppercase tracking-[0.1em] mt-1 whitespace-nowrap">Happy Clients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- Who We Are Section (Banner Style) -->
+  <section id="who-we-are" class="relative w-full overflow-hidden animate-on-scroll">
+    <!-- Background Image -->
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Office Lobby" class="absolute inset-0 w-full h-full object-cover z-0" />
+    
+    <!-- Dark Blue Overlay (Theme Color) -->
+    <div class="absolute inset-0 bg-brand-dark/90 z-10 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-brand-dark/85 z-10"></div>
+
+    <div class="relative z-20 max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20">
+      
+      <!-- Left Content -->
+      <div class="text-left w-full lg:flex-1">
+        <p class="text-white/90 font-bold text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-start gap-2 drop-shadow-sm">
+          <i class="fa-solid fa-bookmark"></i> WHO WE ARE
+        </p>
+        <h2 class="text-[28px] sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] mb-6 drop-shadow-md">
+          Excellence is<br/>
+          Our Standard
+        </h2>
+        <p class="text-white/95 text-sm md:text-base font-medium drop-shadow-sm max-w-2xl leading-relaxed">
+          PeeJay Group Services is a leading facility management company providing end-to-end solutions tailored to meet the unique needs of every client. Our people, processes, and technology ensure operational excellence across industries.
+        </p>
+      </div>
+
+      <!-- Right Content (Button) -->
+      <div class="shrink-0 w-full lg:w-auto flex justify-start lg:justify-end mt-2 lg:mt-0">
+        <a href="#strengths" class="bg-brand-orange hover:bg-[#d95632] text-white px-8 md:px-10 py-4 rounded-md font-bold text-sm md:text-[15px] transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
+          Learn More About Us <i class="fa-solid fa-arrow-right text-white"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Unique Strengths Section -->
+  <section id="strengths" class="bg-[#fcfcfd] py-24 animate-on-scroll border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <p
+          class="text-brand-orange font-bold text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-tag transform -rotate-45"></i> WHY CHOOSE US
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-brand-dark mb-6">Our Unique Strengths</h2>
+        <div class="w-10 h-[3px] bg-brand-orange mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Card 1 -->
+        <div
+          class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
+          <div
+            class="w-16 h-16 rounded-full bg-[#fdf2ef] text-brand-orange flex items-center justify-center text-2xl mx-auto mb-6">
+            <i class="fa-solid fa-users"></i></div>
+          <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Trained Professionals</h3>
+          <p class="text-[13px] text-gray-500 font-medium leading-relaxed">A skilled and dedicated team committed to
+            delivering exceptional service every day.</p>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
+          <div
+            class="w-16 h-16 rounded-full bg-[#eaf8f6] text-brand-teal flex items-center justify-center text-2xl mx-auto mb-6">
+            <i class="fa-solid fa-rocket"></i></div>
+          <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Innovative Technology</h3>
+          <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Smart solutions and modern technology for
+            efficient and transparent operations.</p>
+        </div>
+        <!-- Card 3 -->
+        <div
+          class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
+          <div
+            class="w-16 h-16 rounded-full bg-[#fdf2ef] text-brand-orange flex items-center justify-center text-2xl mx-auto mb-6">
+            <i class="fa-solid fa-bolt"></i></div>
+          <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Quick Response</h3>
+          <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Agile teams ensuring rapid response and
+            minimal downtime for your facilities.</p>
+        </div>
+        <!-- Card 4 -->
+        <div
+          class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
+          <div
+            class="w-16 h-16 rounded-full bg-[#eaf8f6] text-brand-teal flex items-center justify-center text-2xl mx-auto mb-6">
+            <i class="fa-solid fa-shield-halved"></i></div>
+          <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Quality Assurance</h3>
+          <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Rigorous quality checks and standards to
+            ensure a safe and clean environment.</p>
+        </div>
+        <!-- Card 5 -->
+        <div
+          class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
+          <div
+            class="w-16 h-16 rounded-full bg-[#fdf2ef] text-brand-orange flex items-center justify-center text-2xl mx-auto mb-6">
+            <i class="fa-solid fa-thumbs-up"></i></div>
+          <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Safety & Compliance</h3>
+          <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Strict adherence to safety protocols and
+            regulatory compliance.</p>
+        </div>
+        <!-- Card 6 -->
+        <div
+          class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
+          <div
+            class="w-16 h-16 rounded-full bg-[#eaf8f6] text-brand-teal flex items-center justify-center text-2xl mx-auto mb-6">
+            <i class="fa-solid fa-leaf"></i></div>
+          <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Sustainability Focus</h3>
+          <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Environment-friendly practices that
+            contribute to a greener and better tomorrow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder / Leadership Section -->
+  <section id="founder" class="py-24 bg-white animate-on-scroll border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-[1.2fr_1.8fr] gap-12 lg:gap-20 items-center">
+        <!-- Left Side: Owner Photo -->
+        <div class="relative flex justify-center">
+          <!-- Dots decoration -->
+          <div class="absolute -top-10 -left-10 w-40 h-40 bg-dots z-0 opacity-30"></div>
+          <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-dots-teal z-0 opacity-30"></div>
+          
+          <div class="relative z-10 rounded-[32px] overflow-hidden bg-brand-light p-3 border border-orange-100 shadow-xl group hover:shadow-2xl transition-all duration-500 max-w-[380px]">
+            <img src="./owner.png" alt="Lakshmi M N" class="w-full h-auto object-cover rounded-[24px] group-hover:scale-[1.02] transition-transform duration-500" />
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-6 -left-6 bg-brand-dark text-white rounded-2xl p-4 shadow-xl border border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-orange flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-quote-left text-white"></i>
+              </div>
+              <div>
+                <h5 class="font-bold text-xs uppercase tracking-wider text-brand-orange leading-none mb-1">Founder's Motto</h5>
+                <p class="text-[10px] text-gray-300 font-semibold leading-tight">Quality & Integrity First</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Owner Bio -->
+        <div class="text-left mt-8 lg:mt-0">
+          <p class="text-brand-orange font-bold text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-user-tie"></i> LEADERSHIP & VISION
+          </p>
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-brand-dark mb-6 leading-tight">Meet Our Founder</h2>
+          <div class="w-12 h-[3px] bg-brand-orange mb-8 rounded-full"></div>
+          
+          <p class="text-brand-text text-[15px] leading-relaxed mb-6 font-medium">
+            Mrs. Lakshmi M N is the visionary founder and leader of PeeJay Hospitality Services. 
+            Establishing the organization in 2009 with a commitment to trust, reliability, and top-tier professionalism, 
+            she has built the enterprise from the ground up into one of Andhra Pradesh's most respected facility management providers.
+          </p>
+          <p class="text-brand-text text-[14px] leading-relaxed mb-8 font-medium">
+            Under her guidance, PeeJay Hospitality Services delivers comprehensive solutions—including high-quality 
+            corporate housekeeping, expert horticulture, landscaping, and reliable maintenance services—to over 50 corporate clients, 
+            ranging from leading IT parks and retail centers to healthcare facilities and educational institutions.
+          </p>
+
+          <!-- Quote Block -->
+          <div class="bg-brand-light border-l-4 border-brand-orange p-6 rounded-r-2xl shadow-sm relative overflow-hidden">
+            <p class="text-brand-dark italic text-sm font-medium mb-3 relative z-10">
+              "We believe a clean, secure, and well-managed environment is foundational to productivity and business success. 
+              Our focus remains on delivering customized solutions, maintaining strict compliance standards, and nurturing long-term 
+              partnerships with our clients."
+            </p>
+            <span class="text-brand-dark font-bold text-xs">— Lakshmi M N, Founder & Managing Director</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Container -->
+  <div class="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 mt-8 sm:mt-10 animate-on-scroll">
+    <footer
+      class="bg-brand-dark text-white pt-10 pb-4 rounded-[30px] md:rounded-[40px] relative overflow-hidden shadow-2xl">
+
+      <!-- Background Waves -->
+      <svg class="absolute bottom-0 left-0 w-full z-0 opacity-[0.30] pointer-events-none" style="min-height:80px;"
+        viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <path fill="none" stroke="#ea580c" stroke-width="2"
+          d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,229.3C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192">
+        </path>
+        <path fill="none" stroke="#ea580c" stroke-width="1"
+          d="M0,256L48,229.3C96,203,192,149,288,144C384,139,480,181,576,197.3C672,213,768,203,864,181.3C960,160,1056,128,1152,133.3C1248,139,1344,181,1392,202.7L1440,224">
+        </path>
+        <path fill="none" stroke="#ea580c" stroke-width="1.5"
+          d="M0,320L60,309.3C120,299,240,277,360,245.3C480,213,600,171,720,165.3C840,160,960,192,1080,202.7C1200,213,1320,203,1380,197.3L1440,192">
+        </path>
+      </svg>
+
+      <!-- Main Footer Grid -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0 relative z-10 max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+
+        <!-- Column 1: Brand Info -->
+        <div class="flex flex-col items-start pr-0 lg:pr-10">
+          <div class="mb-4 bg-white p-2 rounded-xl inline-block">
+            <img src="./logo.png" alt="PeeJay Logo" class="h-10 w-auto object-contain" />
+          </div>
+          <div class="w-10 h-[2px] bg-[#ea580c] mb-4"></div>
+          <p class="text-[12px] text-gray-300 mb-6 leading-relaxed">
+            Leading facility management company in Andhra Pradesh. Founded in 2009 by Mrs. M. Naga Lakshmi. Offering
+            comprehensive services in corporate housekeeping, horticulture, and landscaping.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-brands fa-facebook-f text-[14px]"></i></a>
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-brands fa-linkedin-in text-[14px]"></i></a>
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-brands fa-instagram text-[14px]"></i></a>
+            <a href="#"
+              class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#ea580c] hover:border-[#ea580c] transition-colors"><i
+                class="fa-regular fa-envelope text-[14px]"></i></a>
+          </div>
+        </div>
+
+        <!-- Columns 2 & 3: Quick Links + Contact Us — side by side on mobile -->
+        <div
+          class="lg:contents grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 lg:gap-0 col-span-1 lg:col-span-2">
+
+          <!-- Column 2: Quick Links -->
+          <div class="flex flex-col items-start lg:border-l border-white/10 lg:pl-10 lg:pr-6">
+            <h4 class="font-bold text-base mb-2 text-white flex items-center gap-2">
+              <i class="fa-solid fa-link text-[#ea580c] text-xs"></i> Quick Links
+            </h4>
+            <div class="w-8 h-[2px] bg-[#ea580c] mb-5"></div>
+            <ul class="text-[13px] text-gray-300 space-y-3 w-full">
+              <li><a href="index.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                    class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> Home</a></li>
+              <li><a href="about.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                    class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> About Us</a></li>
+              <li><a href="services.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                    class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> All Services</a></li>
+              <li><a href="contact.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+                    class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> Contact Us</a></li>
+            </ul>
+          </div>
+          <!-- Column 3: Contact Us -->
+          <div class="flex flex-col items-start lg:border-l border-white/10 lg:pl-10">
+            <h4 class="font-bold text-base mb-2 text-white flex items-center gap-2">
+              <i class="fa-solid fa-phone-volume text-[#ea580c] text-xs"></i> Contact Us
+            </h4>
+            <div class="w-8 h-[2px] bg-[#ea580c] mb-5"></div>
+            <ul class="text-[13px] text-gray-300 space-y-4 w-full">
+              <li class="flex items-start gap-2 sm:gap-4 group">
+                <div
+                  class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                  <i class="fa-solid fa-location-dot text-white text-[10px]"></i>
+                </div>
+                <span class="leading-relaxed">D.No. 10-53-239, Block No. 22/4, Ram Nagar, Visakhapatnam - 530 002.</span>
+              </li>
+              <li class="flex items-start gap-2 sm:gap-4 group">
+                <div
+                  class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                  <i class="fa-solid fa-envelope text-white text-[10px]"></i>
+                </div>
+                <a href="mailto:peejayhospitalityservices@gmail.com"
+                  class="hover:text-white transition-colors leading-relaxed break-all mt-1">peejayhospitalityservices@gmail.com</a>
+              </li>
+              <li class="flex items-start gap-2 sm:gap-4 group">
+                <div
+                  class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
+                  <i class="fa-solid fa-phone text-white text-[10px]"></i>
+                </div>
+                <a href="tel:+919849553755" class="hover:text-white transition-colors leading-relaxed mt-1">+91 9849553755</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider & Copyright -->
+      <div
+        class="border-t border-white/10 mx-4 sm:mx-6 lg:mx-8 pt-6 pb-2 relative z-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-[11px] text-gray-400">
+          &copy; 2024 PeeJay Hospitality Services. All rights reserved.
+        </p>
+        <div class="flex gap-4 text-[11px] text-gray-400">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+
+      <!-- Skyline SVG -->
+      <div class="absolute bottom-0 right-4 lg:right-10 w-[180px] lg:w-[240px] opacity-10 pointer-events-none z-0">
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky / Background Elements -->
+          <circle cx="180" cy="30" r="15" fill="#ea580c" opacity="0.6" />
+
+          <g stroke="#ffffff" stroke-width="1" fill="none" stroke-linejoin="round" opacity="0.8">
+            <!-- Clouds -->
+            <path d="M40,25 C30,25 30,15 40,15 C45,10 55,10 60,15 C70,15 70,25 60,25 Z" />
+            <path d="M210,35 C200,35 200,25 210,25 C215,20 225,20 230,25 C240,25 240,35 230,35 Z" opacity="0.5" />
+
+            <!-- Flying birds -->
+            <path d="M80,10 Q85,5 90,10 Q95,5 100,10" stroke-width="0.5" />
+            <path d="M120,20 Q125,15 130,20 Q135,15 140,20" stroke-width="0.5" />
+
+            <!-- Trees / Plants -->
+            <path d="M20,95 L20,80 M15,85 L20,80 L25,85 M17,90 L20,85 L23,90" stroke="#ea580c" />
+            <path d="M220,95 L220,75 M215,85 L220,75 L225,85 M217,90 L220,85 L223,90" stroke="#ea580c" />
+
+            <!-- Tree canopy styled -->
+            <path d="M30,95 C20,75 40,75 35,95 M32,85 L32,95" />
+            <path d="M210,95 C200,75 220,75 215,95 M212,85 L212,95" />
+            <path d="M225,95 C220,85 235,85 230,95 M228,90 L228,95" />
+
+            <!-- Birds -->
+            <path d="M160,20 Q165,15 170,20 Q175,15 180,20" stroke-width="0.5" />
+            <path d="M190,10 Q194,7 198,10 Q202,7 206,10" stroke-width="0.5" />
+
+            <!-- Background Buildings -->
+            <rect x="30" y="40" width="25" height="55" opacity="0.3" />
+            <rect x="160" y="50" width="30" height="45" opacity="0.3" />
+            <polygon points="160,50 175,40 190,50" opacity="0.3" />
+
+            <!-- Main Buildings -->
+            <rect x="50" y="30" width="35" height="65" />
+            <line x1="60" y1="35" x2="60" y2="90" stroke-dasharray="3 3" />
+            <line x1="75" y1="35" x2="75" y2="90" stroke-dasharray="3 3" />
+
+            <!-- Tall Central Tower -->
+            <rect x="95" y="15" width="40" height="80" />
+            <rect x="105" y="5" width="20" height="10" />
+            <line x1="115" y1="0" x2="115" y2="5" />
+            <line x1="100" y1="30" x2="130" y2="30" />
+            <line x1="100" y1="45" x2="130" y2="45" />
+            <line x1="100" y1="60" x2="130" y2="60" />
+            <line x1="100" y1="75" x2="130" y2="75" />
+
+            <!-- Right Building -->
+            <rect x="145" y="40" width="35" height="55" />
+            <rect x="155" y="45" width="5" height="45" />
+            <rect x="165" y="45" width="5" height="45" />
+
+            <!-- Ground Line -->
+            <line x1="0" y1="95" x2="240" y2="95" stroke-width="1.5" />
+          </g>
+        </svg>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      const observer = new IntersectionObserver((entries) => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const isScrollingDown = scrollTop > lastScrollTop;
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (isScrollingDown) {
+              entry.target.style.setProperty('--scroll-translate', '40px');
+            } else {
+              entry.target.style.setProperty('--scroll-translate', '-40px');
+            }
+            void entry.target.offsetHeight; // force reflow
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      }, observerOptions);
+
+      // Distribute animation to individual elements instead of large wrappers
+      const wrappers = document.querySelectorAll('.animate-on-scroll');
+      wrappers.forEach(wrapper => {
+        const elements = wrapper.querySelectorAll('.grid > div, .features-grid > div, .text-center, .hero-blob, .bg-white.rounded-xl, .bg-brand-dark.rounded-2xl, .text-left, .relative > img, .flex-row > div, .flex-row-reverse > div');
+        
+        if (elements.length > 0) {
+          wrapper.classList.remove('animate-on-scroll');
+          elements.forEach(el => el.classList.add('animate-on-scroll'));
+        }
+      });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+
+</html>
