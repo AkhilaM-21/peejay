@@ -63,217 +63,239 @@
   <!-- Hero Section Wrapper -->
   <div class="relative pb-12 lg:pb-32 z-10">
     <!-- Desktop Diagonal Peach Wave Background -->
-    <div class="hidden md:block absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[110%] lg:h-full overflow-hidden -z-20 pointer-events-none">
+    <div
+      class="hidden md:block absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[110%] lg:h-full overflow-hidden -z-20 pointer-events-none">
       <svg viewBox="0 0 1440 900" class="w-full h-[110%] lg:h-full" preserveAspectRatio="none">
         <path fill="#fef4ec" d="M0,0 L1440,0 L1440,550 C 1200,300 600,1100 0,650 Z"></path>
       </svg>
     </div>
 
     <!-- Mobile Peach Wave Background (Normal Bottom Wave) -->
-    <div class="block md:hidden absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[105%] overflow-hidden -z-20 pointer-events-none">
+    <div
+      class="block md:hidden absolute inset-0 w-[100vw] left-[calc(50%-50vw)] h-[105%] overflow-hidden -z-20 pointer-events-none">
       <svg viewBox="0 0 1440 1200" class="w-full h-full" preserveAspectRatio="none">
         <path fill="#fef4ec" d="M0,0 L1440,0 L1440,1050 C 1200,1200 600,1000 0,1100 Z"></path>
       </svg>
     </div>
 
-  <!-- Navbar -->
-  <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center relative z-50">
-    <div class="flex-shrink-0">
-      <a href="index.html">
-        <img src="./logo.png" alt="PeeJay Logo" class="w-32 sm:w-40 md:w-48 h-auto object-contain" />
-      </a>
-    </div>
-
-    <!-- Desktop Menu (Centered) -->
-    <div class="hidden md:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
-      <a href="index.html" class="text-brand-dark transition-colors hover:text-brand-orange">HOME</a>
-      <a href="services.html" class="text-brand-dark transition-colors hover:text-brand-orange">SERVICES</a>
-      <a href="about.html" class="text-brand-orange transition-colors hover:text-brand-orange">ABOUT</a>
-      <a href="contact.html" class="text-brand-dark transition-colors hover:text-brand-orange">CONTACT</a>
-    </div>
-
-    <div class="hidden md:flex flex-shrink-0">
-      <a href="contact.html"
-        class="bg-brand-orange hover:bg-[#d95632] text-white px-8 py-3 rounded-full text-sm font-semibold transition-all hover:shadow-[0_10px_20px_rgba(242,104,66,0.3)]">
-        Contact Us
-      </a>
-    </div>
-
-    <!-- Mobile Menu Button -->
-    <button id="mobileMenuBtn" class="md:hidden ml-auto text-2xl text-brand-dark focus:outline-none z-[60] relative"
-      onclick="toggleMobileMenu()">
-      <i id="menuIcon" class="fa-solid fa-bars"></i>
-    </button>
-
-    <!-- Mobile Drawer Overlay -->
-    <div id="mobileOverlay"
-      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[55] hidden md:hidden"
-      onclick="toggleMobileMenu()"></div>
-
-    <!-- Mobile Drawer -->
-    <div id="mobileMenu"
-      class="fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-white z-[60] shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-
-      <!-- Drawer Header -->
-      <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+    <!-- Navbar -->
+    <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center relative z-50">
+      <div class="flex-shrink-0">
         <a href="index.html">
-          <img src="./logo.png" alt="PeeJay Logo" class="h-10 w-auto object-contain" />
-        </a>
-        <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-brand-dark transition-colors">
-          <i class="fa-solid fa-xmark text-xl"></i>
-        </button>
-      </div>
-
-      <!-- Drawer Links -->
-      <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
-        <a href="index.html"
-          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
-          <i class="fa-solid fa-house text-xs"></i> HOME
-        </a>
-        <a href="services.html"
-          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
-          <i class="fa-solid fa-briefcase text-xs"></i> SERVICES
-        </a>
-        <a href="about.html"
-          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-orange font-bold text-sm bg-orange-50 border-l-4 border-brand-orange">
-          <i class="fa-solid fa-building-user text-xs"></i> ABOUT
-        </a>
-        <a href="contact.html"
-          class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
-          <i class="fa-solid fa-phone text-xs"></i> CONTACT
-        </a>
-      </nav>
-
-      <!-- Drawer Footer CTA -->
-      <div class="px-6 pb-8">
-        <a href="contact.html"
-          class="block w-full bg-brand-orange hover:bg-[#d95632] text-white py-3 rounded-xl font-semibold text-sm text-center transition-all shadow-md">
-          <i class="fa-solid fa-arrow-right mr-2"></i> Contact Us
+          <img src="./logo.png" alt="PeeJay Logo" class="w-32 sm:w-40 md:w-48 h-auto object-contain" />
         </a>
       </div>
-    </div>
-  </nav>
 
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const overlay = document.getElementById('mobileOverlay');
-      const icon = document.getElementById('menuIcon');
-      const isOpen = !menu.classList.contains('translate-x-full');
-      if (isOpen) {
-        menu.classList.add('translate-x-full');
-        overlay.classList.add('hidden');
-        icon.className = 'fa-solid fa-bars';
-        document.body.style.overflow = '';
-      } else {
-        menu.classList.remove('translate-x-full');
-        overlay.classList.remove('hidden');
-        icon.className = 'fa-solid fa-xmark';
-        document.body.style.overflow = 'hidden';
+      <!-- Desktop Menu (Centered) -->
+      <div class="hidden md:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-brand-dark transition-colors hover:text-brand-orange">HOME</a>
+        <a href="about.html" class="text-brand-orange transition-colors hover:text-brand-orange">ABOUT</a>
+        <a href="services.html" class="text-brand-dark transition-colors hover:text-brand-orange">SERVICES</a>
+        <a href="contact.html" class="text-brand-dark transition-colors hover:text-brand-orange">CONTACT</a>
+      </div>
+
+      <div class="hidden md:flex flex-shrink-0">
+        <a href="contact.html"
+          class="bg-brand-orange hover:bg-[#d95632] text-white px-8 py-3 rounded-full text-sm font-semibold transition-all hover:shadow-[0_10px_20px_rgba(242,104,66,0.3)]">
+          Contact Us
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden ml-auto text-2xl text-brand-dark focus:outline-none z-[60] relative"
+        onclick="toggleMobileMenu()">
+        <i id="menuIcon" class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Mobile Drawer Overlay -->
+      <div id="mobileOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[55] hidden md:hidden"
+        onclick="toggleMobileMenu()"></div>
+
+      <!-- Mobile Drawer -->
+      <div id="mobileMenu"
+        class="fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-white z-[60] shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+          <a href="index.html">
+            <img src="./logo.png" alt="PeeJay Logo" class="h-10 w-auto object-contain" />
+          </a>
+          <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-brand-dark transition-colors">
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Drawer Links -->
+        <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
+          <a href="index.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+            <i class="fa-solid fa-house text-xs"></i> HOME
+          </a>
+          <a href="about.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-orange font-bold text-sm bg-orange-50 border-l-4 border-brand-orange">
+            <i class="fa-solid fa-building-user text-xs"></i> ABOUT
+          </a>
+          <a href="services.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+            <i class="fa-solid fa-briefcase text-xs"></i> SERVICES
+          </a>
+          <a href="contact.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-dark font-medium text-sm hover:bg-gray-50 hover:text-brand-orange transition-colors border-l-4 border-transparent">
+            <i class="fa-solid fa-phone text-xs"></i> CONTACT
+          </a>
+        </nav>
+
+        <!-- Drawer Footer CTA -->
+        <div class="px-6 pb-8">
+          <a href="contact.html"
+            class="block w-full bg-brand-orange hover:bg-[#d95632] text-white py-3 rounded-xl font-semibold text-sm text-center transition-all shadow-md">
+            <i class="fa-solid fa-arrow-right mr-2"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const icon = document.getElementById('menuIcon');
+        const isOpen = !menu.classList.contains('translate-x-full');
+        if (isOpen) {
+          menu.classList.add('translate-x-full');
+          overlay.classList.add('hidden');
+          icon.className = 'fa-solid fa-bars';
+          document.body.style.overflow = '';
+        } else {
+          menu.classList.remove('translate-x-full');
+          overlay.classList.remove('hidden');
+          icon.className = 'fa-solid fa-xmark';
+          document.body.style.overflow = 'hidden';
+        }
       }
-    }
-  </script>
+    </script>
 
-  <!-- Hero Section -->
-  <section class="relative pt-6 pb-24 lg:pb-32 z-10 animate-on-scroll">
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
-      <!-- Left Content -->
-      <div class="text-center lg:text-left order-2 lg:order-1 mt-10 lg:mt-0">
-        <p class="text-brand-orange font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-center lg:justify-start gap-2">
-          <i class="fa-solid fa-tag transform -rotate-45"></i> Built on Trust. Driven by Excellence.
-        </p>
-        <h1 class="text-[32px] sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-brand-dark leading-[1.1] mb-6 tracking-tight">
-          A Legacy of<br>Excellence in<br>Facility Management
-        </h1>
-        <p class="text-brand-text leading-relaxed mb-10 text-sm font-medium">
-          For over 50 years, PeeJay Group Services has been a trusted partner in delivering world-class facility
-          management solutions. With a commitment to quality, innovation, and customer satisfaction, we create cleaner,
-          safer, and smarter environments that empower businesses to thrive.
-        </p>
-
-        <!-- Our Promise (Moved into Hero) -->
-        <div class="flex flex-col items-center lg:items-start gap-3 mt-6">
-          <p class="text-brand-orange font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.2em] mb-1 flex items-center gap-2">
-            <i class="fa-solid fa-star"></i> Our Promise
+    <!-- Hero Section -->
+    <section class="relative pt-6 pb-24 lg:pb-32 z-10 animate-on-scroll">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+        <!-- Left Content -->
+        <div class="text-center lg:text-left order-2 lg:order-1 mt-10 lg:mt-0">
+          <p
+            class="text-brand-orange font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-center lg:justify-start gap-2">
+            <i class="fa-solid fa-tag transform -rotate-45"></i> Built on Trust. Driven by Excellence.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 items-start w-full sm:w-auto px-4 sm:px-0">
-            <!-- Stat 1 -->
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-award text-sm"></i>
+          <h1
+            class="text-[32px] sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-brand-dark leading-[1.1] mb-6 tracking-tight">
+            A Legacy of<br>Excellence in<br>Facility Management
+          </h1>
+          <p class="text-brand-text leading-relaxed mb-10 text-sm font-medium">
+            For over 50 years, PeeJay Group Services has been a trusted partner in delivering world-class facility
+            management solutions. With a commitment to quality, innovation, and customer satisfaction, we create
+            cleaner,
+            safer, and smarter environments that empower businesses to thrive.
+          </p>
+
+          <!-- Our Promise (Moved into Hero) -->
+          <div class="flex flex-col items-center lg:items-start gap-3 mt-6">
+            <p
+              class="text-brand-orange font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.2em] mb-1 flex items-center gap-2">
+              <i class="fa-solid fa-star"></i> Our Promise
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 items-start w-full sm:w-auto px-4 sm:px-0">
+              <!-- Stat 1 -->
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-award text-sm"></i>
+                </div>
+                <span
+                  class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Consistent<br>Quality</span>
               </div>
-              <span class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Consistent<br>Quality</span>
+              <!-- Stat 2 -->
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-teal-50 text-brand-teal flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-handshake-simple text-sm"></i>
+                </div>
+                <span
+                  class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Reliable<br>Service</span>
+              </div>
+              <!-- Stat 3 -->
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-heart text-sm"></i>
+                </div>
+                <span
+                  class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Customer<br>Focus</span>
+              </div>
             </div>
-            <!-- Stat 2 -->
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-teal-50 text-brand-teal flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-handshake-simple text-sm"></i>
-              </div>
-              <span class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Reliable<br>Service</span>
+          </div>
+        </div>
+
+        <!-- Right Content (Image with Dots) -->
+        <div class="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+          <!-- Dots top right -->
+          <div class="absolute -top-10 -right-8 w-40 h-40 bg-dots z-0 opacity-40"></div>
+          <!-- Dots bottom left -->
+          <div class="absolute -bottom-10 -left-8 w-40 h-40 bg-dots-teal z-0 opacity-40"></div>
+
+          <div class="relative z-10 w-full max-w-[550px] mt-8 lg:mt-0">
+            <div class="rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white p-2">
+              <img src="about.png" alt="Server Room" class="w-full h-auto aspect-[4/3] object-cover rounded-[32px]" />
             </div>
-            <!-- Stat 3 -->
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-heart text-sm"></i>
+            <!-- Floating Badge (Top Left) -->
+            <div
+              class="absolute -top-6 -left-6 sm:-top-8 sm:-left-12 bg-white rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.12)] py-3 px-5 flex flex-col items-center justify-center z-20 border border-gray-50 min-w-[120px]">
+              <div class="text-brand-orange text-[28px] font-black leading-none tracking-tight mb-1">
+                500<span class="text-brand-orange ml-0.5">+</span>
               </div>
-              <span class="text-brand-dark font-bold text-[12px] sm:text-[13px] leading-tight text-left">Customer<br>Focus</span>
+              <span
+                class="text-brand-dark text-[9px] font-extrabold text-center uppercase tracking-[0.1em] mt-1 whitespace-nowrap">Happy
+                Clients</span>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Right Content (Image with Dots) -->
-      <div class="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-        <!-- Dots top right -->
-        <div class="absolute -top-10 -right-8 w-40 h-40 bg-dots z-0 opacity-40"></div>
-        <!-- Dots bottom left -->
-        <div class="absolute -bottom-10 -left-8 w-40 h-40 bg-dots-teal z-0 opacity-40"></div>
-
-        <div class="relative z-10 w-full max-w-[550px] mt-8 lg:mt-0">
-          <div class="rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white p-2">
-            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Server Room" class="w-full h-auto aspect-[4/3] object-cover rounded-[32px]" />
-          </div>
-          <!-- Floating Badge (Top Left) -->
-          <div class="absolute -top-6 -left-6 sm:-top-8 sm:-left-12 bg-white rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.12)] py-3 px-5 flex flex-col items-center justify-center z-20 border border-gray-50 min-w-[120px]">
-            <div class="text-brand-orange text-[28px] font-black leading-none tracking-tight mb-1">
-              500<span class="text-brand-orange ml-0.5">+</span>
-            </div>
-            <span class="text-brand-dark text-[9px] font-extrabold text-center uppercase tracking-[0.1em] mt-1 whitespace-nowrap">Happy Clients</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
   </div>
 
   <!-- Who We Are Section (Banner Style) -->
   <section id="who-we-are" class="relative w-full overflow-hidden animate-on-scroll">
     <!-- Background Image -->
-    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Office Lobby" class="absolute inset-0 w-full h-full object-cover z-0" />
-    
+    <img
+      src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+      alt="Office Lobby" class="absolute inset-0 w-full h-full object-cover z-0" />
+
     <!-- Dark Blue Overlay (Theme Color) -->
     <div class="absolute inset-0 bg-brand-dark/90 z-10 mix-blend-multiply"></div>
     <div class="absolute inset-0 bg-brand-dark/85 z-10"></div>
 
-    <div class="relative z-20 max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20">
-      
+    <div
+      class="relative z-20 max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20">
+
       <!-- Left Content -->
       <div class="text-left w-full lg:flex-1">
-        <p class="text-white/90 font-bold text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-start gap-2 drop-shadow-sm">
+        <p
+          class="text-white/90 font-bold text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center justify-start gap-2 drop-shadow-sm">
           <i class="fa-solid fa-bookmark"></i> WHO WE ARE
         </p>
-        <h2 class="text-[28px] sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] mb-6 drop-shadow-md">
-          Excellence is<br/>
+        <h2
+          class="text-[28px] sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] mb-6 drop-shadow-md">
+          Excellence is<br />
           Our Standard
         </h2>
         <p class="text-white/95 text-sm md:text-base font-medium drop-shadow-sm max-w-2xl leading-relaxed">
-          PeeJay Group Services is a leading facility management company providing end-to-end solutions tailored to meet the unique needs of every client. Our people, processes, and technology ensure operational excellence across industries.
+          PeeJay Group Services is a leading facility management company providing end-to-end solutions tailored to meet
+          the unique needs of every client. Our people, processes, and technology ensure operational excellence across
+          industries.
         </p>
       </div>
 
       <!-- Right Content (Button) -->
       <div class="shrink-0 w-full lg:w-auto flex justify-start lg:justify-end mt-2 lg:mt-0">
-        <a href="#strengths" class="bg-brand-orange hover:bg-[#d95632] text-white px-8 md:px-10 py-4 rounded-md font-bold text-sm md:text-[15px] transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
+        <a href="#strengths"
+          class="bg-brand-orange hover:bg-[#d95632] text-white px-8 md:px-10 py-4 rounded-md font-bold text-sm md:text-[15px] transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
           Learn More About Us <i class="fa-solid fa-arrow-right text-white"></i>
         </a>
       </div>
@@ -299,7 +321,8 @@
           class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
           <div
             class="w-16 h-16 rounded-full bg-[#fdf2ef] text-brand-orange flex items-center justify-center text-2xl mx-auto mb-6">
-            <i class="fa-solid fa-users"></i></div>
+            <i class="fa-solid fa-users"></i>
+          </div>
           <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Trained Professionals</h3>
           <p class="text-[13px] text-gray-500 font-medium leading-relaxed">A skilled and dedicated team committed to
             delivering exceptional service every day.</p>
@@ -309,7 +332,8 @@
           class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
           <div
             class="w-16 h-16 rounded-full bg-[#eaf8f6] text-brand-teal flex items-center justify-center text-2xl mx-auto mb-6">
-            <i class="fa-solid fa-rocket"></i></div>
+            <i class="fa-solid fa-rocket"></i>
+          </div>
           <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Innovative Technology</h3>
           <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Smart solutions and modern technology for
             efficient and transparent operations.</p>
@@ -319,7 +343,8 @@
           class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
           <div
             class="w-16 h-16 rounded-full bg-[#fdf2ef] text-brand-orange flex items-center justify-center text-2xl mx-auto mb-6">
-            <i class="fa-solid fa-bolt"></i></div>
+            <i class="fa-solid fa-bolt"></i>
+          </div>
           <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Quick Response</h3>
           <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Agile teams ensuring rapid response and
             minimal downtime for your facilities.</p>
@@ -329,7 +354,8 @@
           class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
           <div
             class="w-16 h-16 rounded-full bg-[#eaf8f6] text-brand-teal flex items-center justify-center text-2xl mx-auto mb-6">
-            <i class="fa-solid fa-shield-halved"></i></div>
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
           <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Quality Assurance</h3>
           <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Rigorous quality checks and standards to
             ensure a safe and clean environment.</p>
@@ -339,7 +365,8 @@
           class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
           <div
             class="w-16 h-16 rounded-full bg-[#fdf2ef] text-brand-orange flex items-center justify-center text-2xl mx-auto mb-6">
-            <i class="fa-solid fa-thumbs-up"></i></div>
+            <i class="fa-solid fa-thumbs-up"></i>
+          </div>
           <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Safety & Compliance</h3>
           <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Strict adherence to safety protocols and
             regulatory compliance.</p>
@@ -349,7 +376,8 @@
           class="bg-white rounded-[30px] p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300">
           <div
             class="w-16 h-16 rounded-full bg-[#eaf8f6] text-brand-teal flex items-center justify-center text-2xl mx-auto mb-6">
-            <i class="fa-solid fa-leaf"></i></div>
+            <i class="fa-solid fa-leaf"></i>
+          </div>
           <h3 class="text-brand-dark font-extrabold text-[17px] mb-3">Sustainability Focus</h3>
           <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Environment-friendly practices that
             contribute to a greener and better tomorrow.</p>
@@ -367,16 +395,20 @@
           <!-- Dots decoration -->
           <div class="absolute -top-10 -left-10 w-40 h-40 bg-dots z-0 opacity-30"></div>
           <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-dots-teal z-0 opacity-30"></div>
-          
-          <div class="relative z-10 rounded-[32px] overflow-hidden bg-brand-light p-3 border border-orange-100 shadow-xl group hover:shadow-2xl transition-all duration-500 max-w-[380px]">
-            <img src="./owner.png" alt="Lakshmi M N" class="w-full h-auto object-cover rounded-[24px] group-hover:scale-[1.02] transition-transform duration-500" />
+
+          <div
+            class="relative z-10 rounded-[32px] overflow-hidden bg-brand-light p-3 border border-orange-100 shadow-xl group hover:shadow-2xl transition-all duration-500 max-w-[380px]">
+            <img src="./owner.png" alt="Lakshmi M N"
+              class="w-full h-auto object-cover rounded-[24px] group-hover:scale-[1.02] transition-transform duration-500" />
             <!-- Floating Badge -->
-            <div class="absolute -bottom-6 -left-6 bg-brand-dark text-white rounded-2xl p-4 shadow-xl border border-white/10 flex items-center gap-3">
+            <div
+              class="absolute -bottom-6 -left-6 bg-brand-dark text-white rounded-2xl p-4 shadow-xl border border-white/10 flex items-center gap-3">
               <div class="w-10 h-10 rounded-full bg-brand-orange flex items-center justify-center text-lg shrink-0">
                 <i class="fa-solid fa-quote-left text-white"></i>
               </div>
               <div>
-                <h5 class="font-bold text-xs uppercase tracking-wider text-brand-orange leading-none mb-1">Founder's Motto</h5>
+                <h5 class="font-bold text-xs uppercase tracking-wider text-brand-orange leading-none mb-1">Founder's
+                  Motto</h5>
                 <p class="text-[10px] text-gray-300 font-semibold leading-tight">Quality & Integrity First</p>
               </div>
             </div>
@@ -388,25 +420,31 @@
           <p class="text-brand-orange font-bold text-[11px] uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
             <i class="fa-solid fa-user-tie"></i> LEADERSHIP & VISION
           </p>
-          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-brand-dark mb-6 leading-tight">Meet Our Founder</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-brand-dark mb-6 leading-tight">Meet Our
+            Founder</h2>
           <div class="w-12 h-[3px] bg-brand-orange mb-8 rounded-full"></div>
-          
+
           <p class="text-brand-text text-[15px] leading-relaxed mb-6 font-medium">
-            Mrs. Lakshmi M N is the visionary founder and leader of PeeJay Hospitality Services. 
-            Establishing the organization in 2009 with a commitment to trust, reliability, and top-tier professionalism, 
-            she has built the enterprise from the ground up into one of Andhra Pradesh's most respected facility management providers.
+            Mrs. Lakshmi M N is the visionary founder and leader of PeeJay Hospitality Services.
+            Establishing the organization in 2009 with a commitment to trust, reliability, and top-tier professionalism,
+            she has built the enterprise from the ground up into one of Andhra Pradesh's most respected facility
+            management providers.
           </p>
           <p class="text-brand-text text-[14px] leading-relaxed mb-8 font-medium">
-            Under her guidance, PeeJay Hospitality Services delivers comprehensive solutions—including high-quality 
-            corporate housekeeping, expert horticulture, landscaping, and reliable maintenance services—to over 50 corporate clients, 
+            Under her guidance, PeeJay Hospitality Services delivers comprehensive solutions—including high-quality
+            corporate housekeeping, expert horticulture, landscaping, and reliable maintenance services—to over 50
+            corporate clients,
             ranging from leading IT parks and retail centers to healthcare facilities and educational institutions.
           </p>
 
           <!-- Quote Block -->
-          <div class="bg-brand-light border-l-4 border-brand-orange p-6 rounded-r-2xl shadow-sm relative overflow-hidden">
+          <div
+            class="bg-brand-light border-l-4 border-brand-orange p-6 rounded-r-2xl shadow-sm relative overflow-hidden">
             <p class="text-brand-dark italic text-sm font-medium mb-3 relative z-10">
-              "We believe a clean, secure, and well-managed environment is foundational to productivity and business success. 
-              Our focus remains on delivering customized solutions, maintaining strict compliance standards, and nurturing long-term 
+              "We believe a clean, secure, and well-managed environment is foundational to productivity and business
+              success.
+              Our focus remains on delivering customized solutions, maintaining strict compliance standards, and
+              nurturing long-term
               partnerships with our clients."
             </p>
             <span class="text-brand-dark font-bold text-xs">— Lakshmi M N, Founder & Managing Director</span>
@@ -416,6 +454,118 @@
     </div>
   </section>
 
+  <!-- Experience / Industries Section -->
+  <section class="max-w-[1100px] mx-auto px-6 py-20 relative z-10 bg-brand-bg border-t border-brand-orange/10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left Side: Content -->
+      <div class="flex flex-col animate-on-scroll">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="h-[1px] w-12 bg-brand-orange"></div>
+          <p class="text-brand-orange font-bold tracking-[0.2em] uppercase text-xs">Experience</p>
+        </div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-dark mb-6 leading-tight">
+          Industries We Excel In,<br>
+          <span class="text-brand-orange">Results We Deliver</span>
+        </h2>
+        <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-10">
+          With a proven track record across diverse high-demand sectors, we understand unique operational challenges and
+          deliver facility management solutions that ensure compliance, hygiene, and exceptional experiences.
+        </p>
+
+        <!-- Industry List -->
+        <div class="flex flex-col gap-8">
+          <div class="flex items-start gap-5">
+            <div
+              class="w-14 h-14 rounded-full bg-orange-50 border border-brand-orange/20 flex items-center justify-center text-brand-orange text-2xl shrink-0 shadow-sm transition-transform hover:scale-110">
+              <i class="fa-solid fa-hotel"></i>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-brand-dark mb-1">Hotels & Hospitality</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">Delivering exceptional housekeeping and facility
+                management services to luxury hotels, resorts, and hospitality chains.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5">
+            <div
+              class="w-14 h-14 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-500 text-2xl shrink-0 shadow-sm transition-transform hover:scale-110">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-brand-dark mb-1">Colleges & IT Parks</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">Maintaining clean, safe, and productive environments in
+                educational institutions and corporate IT campuses.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5">
+            <div
+              class="w-14 h-14 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-500 text-2xl shrink-0 shadow-sm transition-transform hover:scale-110">
+              <i class="fa-solid fa-shopping-bag"></i>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-brand-dark mb-1">Hospitals & Malls</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">Ensuring hygiene, safety, and seamless operations for
+                hospitals, healthcare centres, and large shopping malls.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Gallery Grid -->
+      <div class="grid grid-cols-2 gap-3 md:gap-4 h-[500px] sm:h-[550px] lg:h-[650px] animate-on-scroll">
+
+        <!-- Left Column -->
+        <div class="flex flex-col gap-3 md:gap-4 h-full pb-8">
+          <!-- Top Left Image (Larger) -->
+          <div class="h-[60%] overflow-hidden rounded-2xl md:rounded-[2rem] shadow-lg relative group">
+            <img src="1.jpeg" alt="Hospitality"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-5">
+              <span class="text-white font-bold tracking-wider text-sm md:text-lg">Hospitality</span>
+            </div>
+          </div>
+          <!-- Bottom Left Image (Smaller) -->
+          <div class="h-[40%] overflow-hidden rounded-2xl md:rounded-[2rem] shadow-lg relative group">
+            <img src="5.jpeg" alt="Education"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-5">
+              <span class="text-white font-bold tracking-wider text-sm md:text-lg">Education</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column (Staggered down) -->
+        <div class="flex flex-col gap-3 md:gap-4 h-full pt-8">
+          <!-- Top Right Image -->
+          <div class="h-[30%] overflow-hidden rounded-2xl md:rounded-[2rem] shadow-lg relative group">
+            <img src="2.jpeg" alt="Healthcare"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-5">
+              <span class="text-white font-bold tracking-wider text-sm md:text-base">Healthcare</span>
+            </div>
+          </div>
+          <!-- Middle Right Image -->
+          <div class="h-[40%] overflow-hidden rounded-2xl md:rounded-[2rem] shadow-lg relative group">
+            <img src="4.jpeg" alt="Malls"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-5">
+              <span class="text-white font-bold tracking-wider text-sm md:text-base">Malls</span>
+            </div>
+          </div>
+          <!-- Bottom Right Image -->
+          <div class="h-[30%] overflow-hidden rounded-2xl md:rounded-[2rem] shadow-lg relative group">
+            <img src="6.jpeg" alt="Corporate"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-5">
+              <span class="text-white font-bold tracking-wider text-sm md:text-base">Corporate</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
   <!-- Footer Container -->
   <div class="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 mt-8 sm:mt-10 animate-on-scroll">
     <footer
@@ -466,8 +616,7 @@
         </div>
 
         <!-- Columns 2 & 3: Quick Links + Contact Us — side by side on mobile -->
-        <div
-          class="lg:contents grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 lg:gap-0 col-span-1 lg:col-span-2">
+        <div class="lg:contents grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 lg:gap-0 col-span-1 lg:col-span-2">
 
           <!-- Column 2: Quick Links -->
           <div class="flex flex-col items-start lg:border-l border-white/10 lg:pl-10 lg:pr-6">
@@ -476,13 +625,17 @@
             </h4>
             <div class="w-8 h-[2px] bg-[#ea580c] mb-5"></div>
             <ul class="text-[13px] text-gray-300 space-y-3 w-full">
-              <li><a href="index.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+              <li><a href="index.html"
+                  class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
                     class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> Home</a></li>
-              <li><a href="about.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+              <li><a href="about.html"
+                  class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
                     class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> About Us</a></li>
-              <li><a href="services.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+              <li><a href="services.html"
+                  class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
                     class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> All Services</a></li>
-              <li><a href="contact.html" class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
+              <li><a href="contact.html"
+                  class="hover:text-white transition-colors flex items-center gap-3 whitespace-nowrap"><i
                     class="fa-solid fa-chevron-right text-[#ea580c] text-[10px]"></i> Contact Us</a></li>
             </ul>
           </div>
@@ -498,7 +651,8 @@
                   class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
                   <i class="fa-solid fa-location-dot text-white text-[10px]"></i>
                 </div>
-                <span class="leading-relaxed">D.No. 10-53-239, Block No. 22/4, Ram Nagar, Visakhapatnam - 530 002.</span>
+                <span class="leading-relaxed">D.No. 10-53-239, Block No. 22/4, Ram Nagar, Visakhapatnam - 530
+                  002.</span>
               </li>
               <li class="flex items-start gap-2 sm:gap-4 group">
                 <div
@@ -513,7 +667,8 @@
                   class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ea580c] transition-colors flex items-center justify-center shrink-0 -mt-0.5">
                   <i class="fa-solid fa-phone text-white text-[10px]"></i>
                 </div>
-                <a href="tel:+919849553755" class="hover:text-white transition-colors leading-relaxed mt-1">+91 9849553755</a>
+                <a href="tel:+919849553755" class="hover:text-white transition-colors leading-relaxed mt-1">+91
+                  9849553755</a>
               </li>
             </ul>
           </div>
@@ -622,7 +777,7 @@
       const wrappers = document.querySelectorAll('.animate-on-scroll');
       wrappers.forEach(wrapper => {
         const elements = wrapper.querySelectorAll('.grid > div, .features-grid > div, .text-center, .hero-blob, .bg-white.rounded-xl, .bg-brand-dark.rounded-2xl, .text-left, .relative > img, .flex-row > div, .flex-row-reverse > div');
-        
+
         if (elements.length > 0) {
           wrapper.classList.remove('animate-on-scroll');
           elements.forEach(el => el.classList.add('animate-on-scroll'));
